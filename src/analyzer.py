@@ -1,4 +1,5 @@
 import json
+import re
 from typing import Dict, List
 
 import requests
@@ -198,11 +199,23 @@ def _call_deepseek(prompt: str) -> dict:
         if content.startswith("json"):
             content = content[4:].strip()
 
+    # 第一次尝试：strict=False 允许字符串内出现控制字符（如未转义的换行符）
     try:
-        return json.loads(content)
+        return json.loads(content, strict=False)
     except json.JSONDecodeError as e:
-        print(f"[JSON 解析失败] {e}")
-        print(f"[原始返回前 500 字] {content[:500]}")
+        print(f"[JSON 解析失败，尝试清理控制字符] {e}")
+
+    # 兜底：逐字符清理字符串内的裸控制字符，保留 \n(0x0a) 和 \t(0x09)
+    cleaned = re.sub(
+        r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]',
+        '',
+        content,
+    )
+    try:
+        return json.loads(cleaned, strict=False)
+    except json.JSONDecodeError as e:
+        print(f"[JSON 解析仍然失败] {e}")
+        print(f"[原始返回前 800 字] {content[:800]}")
         raise
 
 
