@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大少年新闻周报 · 2026-09-28</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5; color: #1a1a1a; line-height: 1.75;
+    padding: 16px; -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 820px; margin: 0 auto; }
+
+  /* ===== 封面 ===== */
+  .cover {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb347 100%);
+    color: #fff; padding: 44px 34px; border-radius: 20px;
+    margin-bottom: 26px; box-shadow: 0 12px 32px rgba(255,107,53,0.22);
+    position: relative; overflow: hidden;
+  }
+  .cover::before {
+    content: ""; position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .cover::after {
+    content: ""; position: absolute; bottom: -80px; right: 60px;
+    width: 140px; height: 140px; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .cover-badge {
+    display: inline-block; background: rgba(255,255,255,0.22);
+    padding: 5px 14px; border-radius: 20px; font-size: 13px;
+    margin-bottom: 16px; backdrop-filter: blur(4px);
+  }
+  .cover h1 { font-size: 32px; margin-bottom: 18px; letter-spacing: 1px; }
+  .cover .headline {
+    font-size: 19px; line-height: 1.6; font-weight: 500;
+    padding: 16px 20px; background: rgba(255,255,255,0.16);
+    border-radius: 12px; margin-bottom: 20px; backdrop-filter: blur(4px);
+  }
+  .cover .keywords { margin-bottom: 22px; }
+  .cover .keyword {
+    display: inline-block; background: rgba(255,255,255,0.28);
+    padding: 4px 12px; border-radius: 14px; font-size: 13px;
+    margin: 0 8px 8px 0;
+  }
+  .cover .points { list-style: none; }
+  .cover .points li {
+    padding: 8px 0 8px 24px; position: relative; font-size: 15px;
+    border-bottom: 1px dashed rgba(255,255,255,0.2);
+  }
+  .cover .points li:last-child { border-bottom: none; }
+  .cover .points li::before {
+    content: "▸"; position: absolute; left: 0; opacity: 0.85;
+  }
+
+  /* ===== 栏目 ===== */
+  .category {
+    background: #fff; border-radius: 20px; padding: 34px 32px;
+    margin-bottom: 24px; box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+  }
+  .category-title {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px; padding-bottom: 16px;
+    border-bottom: 2px solid #f5f5f5;
+  }
+  .category-title .icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; background: linear-gradient(135deg, #ff6b35, #f7931e);
+    box-shadow: 0 4px 12px rgba(255,107,53,0.25);
+  }
+  .category-title h2 { font-size: 22px; color: #ff6b35; font-weight: 700; }
+
+  .overview {
+    background: linear-gradient(135deg, #fff8f3 0%, #fff3ec 100%);
+    padding: 20px 22px; border-radius: 14px; margin-bottom: 26px;
+    font-size: 15px; color: #444; line-height: 1.8;
+    border-left: 4px solid #ffb347;
+  }
+
+  /* ===== 重点新闻 ===== */
+  .highlight {
+    padding-top: 24px; margin-top: 24px; border-top: 1px dashed #ebeef2;
+  }
+  .highlight:first-of-type { padding-top: 0; margin-top: 0; border-top: none; }
+  .highlight h3 {
+    font-size: 18px; margin-bottom: 10px; line-height: 1.5; color: #222;
+  }
+  .highlight .meta {
+    font-size: 13px; color: #999; margin-bottom: 18px;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .highlight .meta .source-tag {
+    background: #f5f5f5; color: #666; padding: 2px 10px;
+    border-radius: 10px; font-size: 12px;
+  }
+  .highlight .meta a { color: #ff6b35; text-decoration: none; font-weight: 500; }
+  .highlight .meta a:hover { text-decoration: underline; }
+
+  .dimension {
+    margin-bottom: 12px; padding: 14px 18px;
+    background: #fafbfc; border-radius: 12px;
+    border-left: 4px solid #ddd; transition: background 0.2s;
+  }
+  .dimension:hover { background: #f5f7fa; }
+  .dimension .label {
+    font-weight: 600; font-size: 13px; margin-bottom: 6px;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .dimension p { font-size: 14px; color: #333; line-height: 1.8; }
+  .dimension.knowledge { border-left-color: #4a90e2; }
+  .dimension.knowledge .label { color: #4a90e2; }
+  .dimension.history { border-left-color: #8e6e53; }
+  .dimension.history .label { color: #8e6e53; }
+  .dimension.global { border-left-color: #16a085; }
+  .dimension.global .label { color: #16a085; }
+  .dimension.thinking { border-left-color: #9b59b6; }
+  .dimension.thinking .label { color: #9b59b6; }
+  .dimension.subject { border-left-color: #27ae60; }
+  .dimension.subject .label { color: #27ae60; }
+  .dimension.writing { border-left-color: #e67e22; }
+  .dimension.writing .label { color: #e67e22; }
+
+  /* ===== 时事薯条 ===== */
+  .fries-grid {
+    display: grid; grid-template-columns: 1fr; gap: 12px;
+  }
+  .fries-card {
+    background: #fffdf5; border-radius: 12px; padding: 14px 18px;
+    border-left: 4px solid #f5b041;
+  }
+  .fries-card .fries-title {
+    font-size: 15px; font-weight: 600; color: #333; margin-bottom: 6px;
+  }
+  .fries-card .fries-comment {
+    font-size: 13px; color: #666; margin-bottom: 6px;
+  }
+  .fries-card .fries-knowledge {
+    font-size: 12px; color: #d68910;
+    background: #fff8e6; padding: 4px 10px; border-radius: 8px;
+    display: inline-block;
+  }
+
+  /* ===== 副刊 ===== */
+  .supplement {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #fff; border-radius: 20px; padding: 36px 32px;
+    margin-bottom: 24px; box-shadow: 0 8px 24px rgba(44,62,80,0.2);
+  }
+  .supplement h2 {
+    font-size: 24px; margin-bottom: 10px; display: flex;
+    align-items: center; gap: 10px; color: #fff;
+  }
+  .supplement .topic {
+    font-size: 15px; opacity: 0.85; margin-bottom: 26px;
+    padding-left: 34px;
+  }
+  .perspective {
+    background: rgba(255,255,255,0.08); border-radius: 14px;
+    padding: 20px 22px; margin-bottom: 14px;
+    border-left: 3px solid #ffb347;
+    backdrop-filter: blur(4px);
+  }
+  .perspective:last-child { margin-bottom: 0; }
+  .perspective .role {
+    font-size: 13px; font-weight: 600; color: #ffb347;
+    margin-bottom: 8px; letter-spacing: 0.5px;
+  }
+  .perspective p { font-size: 14px; line-height: 1.85; color: #eaeaea; }
+
+  /* ===== 观点碰撞 ===== */
+  .debate {
+    background: #fff; border-radius: 20px; padding: 34px 32px;
+    margin-bottom: 24px; box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+  }
+  .debate h2 {
+    font-size: 22px; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 10px; color: #c0392b;
+  }
+  .debate .debate-topic {
+    font-size: 16px; color: #555; margin-bottom: 24px;
+    padding-left: 34px;
+  }
+  .debate-sides {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 640px) {
+    .debate-sides { grid-template-columns: 1fr; }
+  }
+  .side {
+    padding: 18px 20px; border-radius: 14px; font-size: 14px; line-height: 1.8;
+  }
+  .side-a {
+    background: #eaf4fd; border-left: 4px solid #3498db; color: #2c3e50;
+  }
+  .side-b {
+    background: #fdeaea; border-left: 4px solid #e74c3c; color: #2c3e50;
+  }
+  .side .side-label {
+    font-weight: 700; font-size: 13px; margin-bottom: 8px; display: block;
+  }
+  .side-a .side-label { color: #3498db; }
+  .side-b .side-label { color: #e74c3c; }
+  .stance {
+    background: #f8f9fa; padding: 18px 20px; border-radius: 14px;
+    border-left: 4px solid #95a5a6; font-size: 14px; line-height: 1.8;
+    color: #444;
+  }
+  .stance .stance-label {
+    font-weight: 700; font-size: 13px; color: #7f8c8d;
+    margin-bottom: 8px; display: block;
+  }
+
+  /* ===== 思考题 ===== */
+  .discussion {
+    background: linear-gradient(135deg, #fffbea 0%, #fff5d6 100%);
+    border-radius: 20px; padding: 34px 32px; margin-bottom: 24px;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+    border: 1px solid #ffe4a8;
+  }
+  .discussion h2 {
+    font-size: 22px; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px; color: #d68910;
+  }
+  .discussion .question {
+    font-size: 17px; font-weight: 600; color: #333;
+    padding: 18px 20px; background: #fff; border-radius: 12px;
+    margin-bottom: 20px; line-height: 1.7;
+    border-left: 4px solid #f5b041;
+  }
+  .hints-title {
+    font-size: 14px; font-weight: 600; color: #d68910;
+    margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+  }
+  .hints ul { list-style: none; margin-bottom: 20px; }
+  .hints li {
+    padding: 8px 0 8px 22px; position: relative;
+    font-size: 14px; color: #555;
+  }
+  .hints li::before {
+    content: "○"; position: absolute; left: 0; color: #f5b041;
+    font-weight: bold;
+  }
+  .writing-tips {
+    background: #fff; border-radius: 12px; padding: 16px 20px;
+  }
+  .writing-tips p { font-size: 14px; color: #555; line-height: 1.8; }
+
+  /* ===== 页脚 ===== */
+  footer {
+    text-align: center; color: #999; font-size: 13px;
+    padding: 32px 0 12px; line-height: 1.8;
+  }
+  footer .brand { color: #ff6b35; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ============ 封面导读 ============ -->
+  
+  <header class="cover">
+    <div class="cover-badge">📅 2026-09-28 · 每周六更新</div>
+    <h1>📰 大少年新闻周报</h1>
+    <div class="headline">中美元首会晤定调新关系，技能大赛中国蝉联榜首</div>
+    
+    <div class="keywords">
+      <span class="keyword"># 中美元首会晤</span><span class="keyword"># 世界技能大赛</span><span class="keyword"># 全球发展倡议</span><span class="keyword"># 技能成才</span><span class="keyword"># 文化传承</span>
+    </div>
+    
+    
+    <ul class="points">
+      <li>习近平主席访美，中美关系新定位内涵更丰富</li><li>中国蝉联世界技能大赛金牌榜榜首，技能成才受关注</li><li>全球发展倡议从中国主张成为国际共识</li><li>中秋假期短途出行活跃，文旅消费有新亮点</li><li>广西大学发现"灭绝植物"罗浮紫珠，生物多样性保护添新例</li>
+    </ul>
+    
+  </header>
+  
+
+  <!-- ============ 各栏目 ============ -->
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🔥</div>
+      <h2>头条</h2>
+    </div>
+
+    <div class="overview">本周头条聚焦习近平主席访美这一重大外交行动。从纪实报道到成果解读，多篇稿件呈现了中美元首历史性会晤的难忘瞬间与深远意义，强调两国关系新定位的内涵。同时，平安中国建设、全球发展倡议、乡村振兴责任制等议题也占据重要位置，体现了国内治理与国际担当的双线并进。对中学生而言，这些新闻帮助理解中国在世界舞台上的角色，以及国家发展背后的制度逻辑。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>习近平主席访美收官，进一步丰富中美关系新定位内涵</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/sztt/202609/t20260928_20060825.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>中美关系新定位指两国元首达成的“相互尊重、和平共处、合作共赢”三原则。这次访美期间，双方同意恢复两军沟通、禁毒合作、气候变化对话等机制。理解这些外交术语，有助于看懂大国交往的新闻。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>1972年尼克松访华打破坚冰，1979年中美建交。此后两国关系历经波折，从“战略伙伴”到“战略竞争”，2023年旧金山会晤提出“新定位”，此次访美是落实共识的关键一步。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>美国与欧盟、日本等盟友也常通过元首会晤调整关系。中国坚持不结盟、不对抗，推动构建新型国际关系，与美方“竞争+合作”模式形成对比，为全球治理提供新选项。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>有人认为中美关系好，世界就稳定；也有人觉得竞争不可避免。你如何看待“合作共赢”与“竞争对抗”并存的现实？作为青少年，你能为两国友好做什么？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版高中思想政治必修1《中国特色社会主义》第四课·中国特色大国外交；人教版初中道德与法治九年级下册第二单元·世界舞台上的中国。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：大国担当与和平发展。开头示例：“当习近平主席的专机跨越太平洋，中美关系的新定位再次吸引世界目光。从‘跨越太平洋的握手’到‘旧金山愿景’，中国始终以合作共赢的钥匙，打开大国相处的新路。”</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>第十一次全国台湾同胞代表会议在京召开 王沪宁出席并讲话</h3>
+      <div class="meta">
+        <span class="source-tag">新华网</span>
+        <a href="http://www.news.cn/politics/2022-12/13/c_1129205862.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>全国台湾同胞代表会议是台联组织的重要会议，每五年召开一次。台联是台湾同胞在大陆的乡亲组织，致力于促进两岸交流。会议通常强调坚持一个中国原则和“九二共识”，反对“台独”。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>1981年第一次全国台湾同胞代表会议召开，台联成立。此后两岸关系从隔绝走向交流，1992年达成“九二共识”，2008年实现“三通”，2015年两岸领导人会晤。台联在推动民间交流中作用独特。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>许多国家有类似侨民组织，如犹太裔美国人委员会。中国处理台湾问题借鉴了“一国两制”构想，但台湾问题纯属中国内政，与德国统一、朝韩对话等有本质区别。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>两岸同胞同根同源，但政治分歧仍在。有人认为经济融合能促进统一，也有人觉得文化认同更重要。你认为青少年可以通过哪些方式增进两岸理解？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版初中道德与法治九年级上册第七课·中华一家亲；人教版高中思想政治必修1《中国特色社会主义》第五课·实现祖国完全统一。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：两岸一家亲。开头示例：“‘乡愁是一湾浅浅的海峡’，余光中的诗句道出两岸同胞的共同心声。第十一次全国台湾同胞代表会议在北京召开，再次证明：无论风云如何变幻，两岸同胞血脉相连的纽带永远不会断。”</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🇨🇳</div>
+      <h2>中国</h2>
+    </div>
+
+    <div class="overview">国内新闻呈现多元图景：总书记一周活动密集，中美民间友好故事温暖人心，世界技能大赛中国蝉联金牌榜首彰显技能人才实力。中秋假期交通出行保持高位，"新中国引黄第一渠"里流淌丰收密码，外国游客爱上"Chinamaxxing"折射文旅新趋势。这些报道从外交、技能、文旅、农业等角度，勾勒出一个活力与温度并存的中国。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>中国蝉联世界技能大赛金牌榜榜首</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/roll/202609/t20260928_20060750.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>世界技能大赛被誉为“技能奥林匹克”，每两年举办一次，比赛项目包括焊接、美发、移动机器人等。中国自2011年首次参赛以来成绩突飞猛进，2022年特别赛和2024年里昂大赛均居金牌榜第一。这反映中国职业教育水平提升。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>中国2010年加入世界技能组织，2011年首次派团参赛。2017年阿布扎比大赛获15金，跃居榜首。2022年上海举办第46届大赛（因疫情分散举办），2024年里昂大赛中国再夺第一。技能人才从“制造”走向“智造”。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>德国、日本、韩国等传统技能强国重视“双元制”教育。中国借鉴德国经验，推行产教融合。但中国高级技工占比仅约5%，而德国达50%，差距仍存，说明技能人才培养任重道远。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>有人觉得上职校没出息，但技能大赛冠军能获“全国技术能手”称号，有的还被高校聘为教授。你认为“唯分数论”是否该改变？技能成才是否值得骄傲？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版初中道德与法治九年级下册第三单元·走向未来的少年；人教版高中思想政治必修2《经济与社会》第三课·推动高质量发展。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：技能报国，人人出彩。开头示例：“当22岁的中国小伙在里昂举起世界技能大赛金牌，我们看到的不只是个人荣耀，更是一个国家从‘制造大国’迈向‘智造强国’的坚实脚步。技能，同样能点亮人生。”</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>外国游客爱上“Chinamaxxing” 文旅行业如何接招？</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/roll/202609/t20260928_20060744.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>“Chinamaxxing”是网络新词，指外国游客深度体验中国生活，如穿汉服、吃火锅、坐高铁、移动支付。这得益于中国免签政策扩大、支付便利化等。文旅行业需提供多语言服务、文化体验产品。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>改革开放初期，外国人来华多为商务或观光。2008年奥运会后“中国热”升温。2023年以来，中国对多国试行免签，2024年入境游恢复至疫情前八成。从“看长城”到“逛菜市场”，旅游方式在变。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>泰国、日本等旅游大国靠特色文化吸引游客。中国正从“景点旅游”转向“全域旅游”，但国际知名度仍需提升。对比法国年接待游客1亿人次，中国入境游潜力巨大。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>外国游客追捧中国生活，是文化自信的体现，但也有人担心过度迎合。你认为如何平衡“原汁原味”与“游客友好”？文旅行业该怎样讲好中国故事？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版初中地理八年级上册第四章·中国的经济发展；人教版高中地理必修2第三章·产业区位因素。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：文化自信与开放包容。开头示例：“当金发碧眼的姑娘穿上马面裙，当外国博主用流利中文直播逛早市，‘Chinamaxxing’不再是一个词，而是一扇窗——让世界看见真实、立体、全面的中国。”</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🌍</div>
+      <h2>世界</h2>
+    </div>
+
+    <div class="overview">国际新闻看点丰富：中秋爆款在欧洲销量暴涨超1600%，中国汽车加速驶入欧洲，展现中国制造走出去的新步伐。全球发展倡议从中国主张成为国际共识，多国专家点赞中美元首会晤成果。同时，日本民众要求改善对华关系、韩国要求乌克兰道歉等事件，反映国际关系的复杂互动。这些新闻帮助中学生理解中国与世界的紧密联系。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>全球发展倡议，从中国主张到国际共识</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/xtt/202609/t20260928_20060738.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>全球发展倡议是习近平主席2021年在联合国提出的，核心是坚持发展优先、以人民为中心、普惠包容、创新驱动、人与自然和谐共生、行动导向。已有100多个国家和国际组织支持，旨在加快落实联合国2030年可持续发展议程。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>二战后建立布雷顿森林体系，但南北差距扩大。2000年联合国提出千年发展目标，2015年升级为2030年可持续发展议程。中国从受援国变为贡献者，全球发展倡议是继“一带一路”后的又一公共产品。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>美国推出“全球基础设施和投资伙伴关系”，欧盟有“全球门户”战略，均侧重基建。中国倡议更强调民生和减贫，不附加政治条件，受到发展中国家欢迎。但西方质疑其透明度，需在合作中完善。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>有人担心中国倡议是“新殖民主义”，但数据表明中国援助不干涉内政。你认为衡量国际发展合作成功的关键指标是什么？是资金规模还是受援国自主发展能力？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版高中思想政治必修1《中国特色社会主义》第四课·中国特色大国外交；人教版初中道德与法治九年级下册第二单元·世界舞台上的中国。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：构建人类命运共同体。开头示例：“从‘授人以鱼’到‘授人以渔’，全球发展倡议让世界看到，中国不仅是发展的受益者，更是发展的贡献者。当非洲村庄亮起第一盏电灯，人类命运共同体的种子正在发芽。”</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>中国汽车加速驶入欧洲，跑得快也要跑得远</h3>
+      <div class="meta">
+        <span class="source-tag">中国青年网</span>
+        <a href="https://news.youth.cn/jsxw/202609/t20260927_16891053.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>中国新能源汽车出口欧洲增长迅猛，2023年出口量超100万辆。优势在于电池技术和成本，但面临欧盟反补贴调查、充电标准差异等挑战。比亚迪、蔚来等品牌在欧洲建厂，从“产品出海”转向“产业出海”。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>2001年中国启动电动汽车重大专项，2009年“十城千辆”推广。2015年成为全球最大新能源车市场。2020年欧洲碳排放法规趋严，中国车企借机进入。从“市场换技术”到“技术输出”，角色反转。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>德国大众、日本丰田在电动化上转型较慢，中国车企抢得先机。但欧盟2024年对中国电动车加征关税，美国《通胀削减法案》排斥中国电池。中国需应对贸易保护，同时提升品牌溢价。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>中国电动车靠性价比取胜，但欧洲消费者更看重品牌历史。你认为中国车企该不该涨价？如何在“跑得快”与“跑得远”之间找到平衡？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版高中地理必修2第四章·交通运输布局与区域发展；人教版初中道德与法治九年级下册第一单元·我们共同的世界。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：中国智造走向世界。开头示例：“当一辆辆中国品牌电动车驶下欧洲港口滚装船，世界汽车工业的百年格局正在被改写。从‘引进来’到‘走出去’，中国汽车用电池和芯片，跑出了一条新赛道。”</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🔬</div>
+      <h2>科学</h2>
+    </div>
+
+    <div class="overview">科学栏目兼顾健康防护与前沿发现。老年人疫苗接种、心血管病患者居家注意事项等防疫科普实用性强；2亿年前蝈蝈嗓门有多高的化石研究，展现古生物学的趣味；广西大学发现"灭绝植物"罗浮紫珠，是生物多样性研究的重要成果。此外，科学家成为"老师的老师"、"做中学"探科学等教育科学新闻，关注科学教育如何落地。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>2亿年前蝈蝈嗓门有多高？化石研究得出答案</h3>
+      <div class="meta">
+        <span class="source-tag">新华网</span>
+        <a href="http://www.news.cn/politics/2022-12/14/c_1129206396.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>中科院南京地质古生物所对全球1000多块螽斯化石研究，重建了2.4亿年前的鸣声频率。螽斯（蝈蝈）靠翅膀摩擦发声，化石中的音锉结构可推断频率。研究发现早期螽斯用低频声音，可能为躲避天敌。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>昆虫发声演化可追溯到3亿年前。石炭纪森林中已有原始鸣虫。二叠纪末大灭绝后，螽斯在侏罗纪多样化。此次研究将鸣声演化与中生代声景重建结合，是古生物学与声学交叉的创新。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>美国、德国团队也研究昆虫化石声学，但多聚焦于新生代。中国团队利用大数据和CT扫描，在古生代-中生代过渡期取得突破。这提升了中国在古昆虫学领域的国际话语权。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>科学家如何从石头里“听”到2亿年前的声音？这依赖物理模型和比较解剖。你认为研究古生物鸣声有什么现实意义？或许能启发仿生声学材料。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版初中生物八年级上册第五单元·生物的多样性及其保护；人教版高中生物必修2《遗传与进化》第6章·生物进化。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：科学探索永无止境。开头示例：“一块沉默2.4亿年的化石，在科学家手中‘开口说话’。中科院团队用CT扫描和声学模型，还原了远古蝈蝈的鸣叫。原来，科学不仅能看见过去，还能听见过去。”</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>6年、10年、12年，他们都经历了什么？</h3>
+      <div class="meta">
+        <span class="source-tag">新华网</span>
+        <a href="http://www.news.cn/politics/2022-12/14/c_1129206833.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>神舟十四号航天员陈冬、刘洋、蔡旭哲分别备战6年、10年、12年。航天员训练包括超重耐力、失重飞机、野外生存等。中国航天员选拔从飞行员中产生，需千锤百炼。这体现了载人航天精神的传承。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>1998年首批航天员14人，2003年杨利伟首飞。2010年第二批7人，2020年第三批18人。从“一人一天”到“三人半年”，中国空间站建成后进入常态化驻留。每位航天员背后都是数年苦练。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>美国NASA宇航员训练约2年，俄罗斯加加林中心训练3-5年。中国航天员训练周期更长，因需掌握空间站操作、机械臂等复杂技能。中国航天员队伍年轻化，第三批平均年龄约35岁。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>12年准备只为一次飞行，值得吗？航天员说“梦想值得等待”。你认为在快节奏时代，这种“长期主义”给我们什么启示？如何对待自己的梦想？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版初中道德与法治九年级上册第四课·梦想与奋斗；人教版高中思想政治必修4《哲学与文化》第三单元·实现人生价值。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：坚持与梦想。开头示例：“12年，足够一个少年长大成人；12年，蔡旭哲只做了一件事——为飞向太空做准备。当神舟十四号划破夜空，我们明白：所有看似漫长的等待，都在为梦想积蓄力量。”</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🎨</div>
+      <h2>文化</h2>
+    </div>
+
+    <div class="overview">文化栏目关注遗产保护与生活传承。守护文化遗产、滋养当代生活是核心主题，用好大众媒介传承非遗探讨传播新路径。老手艺焕新生、传统民俗催生消费新增长点，展现传统文化与现代生活的融合。银发旅游如何适老又悦老，则从文旅角度关注老年群体的精神需求。这些内容引导中学生思考文化传承与创新的关系。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>守护文化遗产 滋养当代生活</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/xtt/202609/t20260928_20060741.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>文化遗产包括物质和非物质两类。中国有56项世界遗产，43项人类非遗。保护理念从“冻结式”转向“活态传承”，如故宫文创、非遗工坊。数字化技术如3D扫描、VR展示让文物“活”起来。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>1985年中国加入《世界遗产公约》，1987年长城等首批入选。2005年设立“文化遗产日”，2011年颁布《非物质文化遗产法》。从“重申报”到“重保护”，从“政府主导”到“社会参与”，理念不断升级。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>意大利有58项世界遗产，法国有49项，均注重遗产与旅游融合。日本“重要无形文化财”制度保护“人间国宝”。中国非遗保护起步晚但进展快，但过度商业化问题需警惕。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>保护文化遗产需要花钱，有人认为不如建工厂。但文化认同是民族根脉。你认为如何让年轻人爱上传统文化？是靠短视频还是课堂教育？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版初中历史七年级上册第一单元·史前时期；人教版高中历史必修《中外历史纲要》上册第一单元·中华文明起源。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：文化传承与创新。开头示例：“当600岁的紫禁城遇上18岁的文创设计师，当千年皮影戏走进直播间，文化遗产不再是博物馆里的标本，而是流淌在当代生活中的活水。”</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>用好大众媒介传承非遗</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202609/t20260928_2111525937.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>大众媒介包括电视、短视频、直播等。非遗传承过去靠师徒口传心授，如今通过抖音、B站等吸引年轻人。例如“非遗合伙人”计划帮助传承人变现。但需注意碎片化传播可能丢失文化内涵。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>2001年昆曲入选联合国“人类口头和非物质遗产代表作”，中国非遗保护起步。2011年《非遗法》实施。2020年“非遗购物节”开启，2023年“非遗主播”成为新职业。媒介形态改变传承生态。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>日本和服、韩国泡菜通过影视剧传播。法国奢侈品手工艺靠品牌故事。中国非遗传播渠道更依赖短视频，但国际影响力仍有限。需借鉴“韩流”经验，打造文化IP。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>短视频让非遗“火”了，但15秒能传递多少文化？有人认为这是普及，有人觉得是浅薄。你认为大众媒介是传承的帮手还是杀手？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版初中道德与法治九年级上册第五课·守望精神家园；人教版高中思想政治必修4《哲学与文化》第三单元·文化传承与文化创新。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：科技赋能文化传承。开头示例：“一根竹篾在抖音直播中变成精巧的竹编包，一场皮影戏在B站收获百万弹幕。大众媒介正为非遗插上翅膀，但飞得再高，根不能断。”</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">📖</div>
+      <h2>教育</h2>
+    </div>
+
+    <div class="overview">教育新闻聚焦改革与实践。河南汤阴职教中心学生义务修家电，在为民服务中练技能，体现职业教育服务社会的理念。世界技能组织主席称赞中国高度重视职业教育。AI时代大学教育应走向"人技共鸣"，新教师如何上好"第一课"，以及江南大学教授十五载往返东西部的故事，从不同侧面展现教育者的探索与坚守。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>让课堂跟着群众需求走：河南汤阴职教中心学生志愿者义务修家电，在为民服务中练技能</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/roll/202609/t20260928_20060793.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>职业教育与普通教育是两种不同教育类型，具有同等重要地位。2022年新修订的《职业教育法》明确职业教育要“坚持产教融合、校企合作，坚持工学结合、知行合一”。河南汤阴职教中心把课堂搬到社区，学生用所学技能义务维修家电，既解决了群众实际困难，又在真实场景中检验了学习成果。这种“做中学、学中做”的模式，正是现代职业教育倡导的教学方式，也体现了教育服务社会的功能。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>课堂一定要在教室里吗？当学生走出校门用技能服务他人时，学习动机、责任感和技能水平会发生怎样的变化？这种“服务性学习”是否比单纯考试更能衡量教育质量？另一方面，职业教育长期被部分人视为“低人一等”，当学生用技能赢得社区尊重时，我们是否该重新思考“什么才是好的教育”？请结合身边事例，谈谈你对“有用之才”的理解。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《道德与法治》九年级下册第三单元·走向未来；人教版《劳动》八年级上册第二单元·服务性劳动。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：螺丝刀在指尖转动，万用表指针轻轻跳动——这不是工厂车间，而是河南汤阴一个社区的服务现场。一群职教学生蹲在电风扇、电饭煲前，用课堂上学到的技能为居民排忧解难。当“课堂”跟着群众需求走，学习便不再是纸上谈兵，而成为连接知识与生活的桥梁。这让我思考：教育的真正考场，或许从来不在试卷上，而在人们需要的地方。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>AI时代大学教育应走向“人技共鸣”</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202609/t20260928_2111525936.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>人工智能正在深刻改变知识生产与传播方式。ChatGPT、DeepSeek等大模型能快速生成论文、代码和设计方案，传统“知识传授型”教育面临挑战。文章提出“人技共鸣”，指人类智慧与人工智能协同互补：AI负责数据处理、模式识别，人类负责价值判断、情感体验和创造性突破。这要求教育从记忆知识转向培养批判性思维、伦理意识和人机协作能力，也呼应了联合国教科文组织提出的“教育未来”理念。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>如果AI能写论文、解数学题，我们还需要花十几年背诵公式和范文吗？当机器越来越像人，人应该更像什么？是比机器算得更快，还是比机器更懂同情、更会提问、更能判断善恶？有人担心AI让人变懒，也有人认为AI让人解放。你如何看待“人技共鸣”？请设想：十年后你从事的工作，哪些部分交给AI，哪些必须由你亲自完成？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《道德与法治》九年级上册第二单元·创新驱动发展；人教版《信息技术》八年级上册第一单元·人工智能初步。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：当AI几秒钟就能写出一篇作文时，我们为什么还要学习写作？答案或许不在“写得比AI好”，而在“写出AI写不出的东西”——真实的困惑、独特的经历、带着体温的思考。AI时代的教育，不是人与机器赛跑，而是人与机器共舞。正如一位学者所说：让技术负责“知道”，让人负责“理解”。这，就是“人技共鸣”的开始。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">⚽</div>
+      <h2>体育</h2>
+    </div>
+
+    <div class="overview">体育栏目以亚运会为主线。中国体育代表团对半程参赛情况进行小结，肯定成绩、正视不足，高标准做好后半程参赛工作。黄滢滢最后一跳逆转夺得女子跳远金牌，严子怡女子标枪夺冠，展现运动员的拼搏精神。此外，"一校一品"模式下民族院校特色体育项目的育人路径探讨，以及体育援藏工作方案，体现体育的多重价值。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>最后一跳逆转 黄滢滢夺得亚运会女子跳远金牌</h3>
+      <div class="meta">
+        <span class="source-tag">华奥星空</span>
+        <a href="https://www.sports.cn/tcdt/tcjsby/2026/0927/709852.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>跳远由助跑、起跳、腾空和落地四个环节组成，其中助跑速度与起跳角度决定成绩。黄滢滢在最后一跳实现逆转，体现了竞技体育中“不到最后一刻不放弃”的精神。亚运会是亚洲最高规格综合性运动会，田径项目竞争激烈。运动员在高压下调整心态、发挥技术，既需要长期训练形成的肌肉记忆，也需要强大的心理调控能力。这种“逆境翻盘”是体育心理学研究的经典案例。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>为什么“最后一跳”总能创造奇迹？是压力反而激发了潜能，还是对手领先后的保守给了机会？在学习和生活中，我们常常在“最后一刻”才爆发，这究竟是拖延的借口，还是人类面对截止日期时的正常反应？如果黄滢滢前五跳就领先，她还能跳出最好成绩吗？请结合一次你自己的“逆转”经历，分析心态、策略与结果之间的关系。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《体育与健康》八年级全一册第四章·田径；人教版《道德与法治》七年级下册第四单元·生命的思考。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：沙坑边，记分牌上的数字冰冷地宣告：她落后了。只剩最后一跳。助跑、踏板、腾空——黄滢滢像一支离弦的箭，划出弧线，稳稳落地。全场沸腾。逆转，在最后一刻发生。这不仅是速度与力量的胜利，更是心理的博弈：当退无可退，人反而卸下包袱，爆发出最纯粹的力量。体育如此，人生亦然。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>体育总局印发《“十五五”体育援藏工作方案》</h3>
+      <div class="meta">
+        <span class="source-tag">华奥星空</span>
+        <a href="https://www.sports.cn/qwfb/xzgz/2026/0827/706402.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>体育援藏是国家援藏工作的重要组成部分，旨在通过资金、人才、技术等支持，提升西藏体育公共服务水平，促进民族团结和边疆发展。“十五五”规划（2026—2030年）强调高质量发展，体育援藏从“输血”转向“造血”，例如建设高原训练基地、培养本地社会体育指导员、发展民族传统体育。西藏平均海拔4000米以上，高原训练能提升运动员心肺功能，但也要科学防范高原反应。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>体育仅仅是比赛和金牌吗？当国家投入资源支援西藏体育，受益的只是运动员吗？社区健身器材、学校体育课、农牧民运动会——这些“看不见金牌”的投入，如何改变普通人的生活？另一方面，援藏是“帮助”还是“共同发展”？藏族传统体育如押加、响箭，如何在现代化进程中既得到保护又焕发活力？请从“公平”和“发展”两个角度谈谈你的看法。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《地理》八年级下册第九章·青藏地区；人教版《道德与法治》九年级上册第四单元·和谐与梦想。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：在海拔4000米的高原上，一群孩子第一次穿上钉鞋，在新建的塑胶跑道上奔跑。他们的呼吸急促，笑容却灿烂。体育援藏，带来的不只是跑道和器材，更是一种可能：让雪山脚下的少年，也能追逐自己的冠军梦。当体育成为纽带，连接的不只是赛场，还有人心与人心、远方与远方。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">💰</div>
+      <h2>经济</h2>
+    </div>
+
+    <div class="overview">经济新闻呈现向新向优向强的态势。前8个月全国规模以上工业企业利润增长15.7%，智能经济塑造发展新优势，新型电池产业发展"十五五"规划发布。中美贸易理事会和"300亿对300亿"对等降税框架公布，民营企业在重大工程全链条各展所长。税务部门曝光骗取出口退税案件，重点领域风险化解有序推进，展现经济治理的力度与温度。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>智能经济何以塑造中国发展新优势</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/zxbd/202609/t20260928_20060761.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>智能经济是以人工智能、大数据、云计算等新一代信息技术为核心驱动力的经济形态。它通过智能化生产、个性化定制、平台化协作，提高全要素生产率。中国拥有海量数据、丰富应用场景和完整产业链，为智能经济发展提供独特优势。例如，智能工厂实现“黑灯生产”，智慧农业用无人机精准施肥，智能交通优化城市拥堵。发展智能经济，也是中国从“制造大国”迈向“智造强国”的关键路径。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>智能经济会让更多人失业，还是创造更多新职业？当机器替代流水线工人，社会需要怎样的教育来帮助人们转型？另一方面，智能经济依赖数据和算法，这是否会加剧“数字鸿沟”——老年人、偏远地区人群可能被落下？技术进步是否天然等于社会进步？请结合你身边的智能化变化（如无人超市、智能客服），谈谈如何让智能经济“既聪明又有温度”。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《道德与法治》九年级上册第二单元·创新驱动发展；人教版《地理》八年级上册第四章·中国的经济发展。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：一盏路灯能根据人流自动调节亮度，一块农田能通过传感器“告诉”农民何时浇水，一家工厂的机器在深夜无人时依然精准运转——这些场景，正在中国各地变成现实。智能经济，不只是技术的升级，更是一场关于效率、就业和公平的深刻变革。它塑造的不仅是国家竞争新优势，也悄然改变着每一个普通人的生活。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>新型电池产业发展“十五五”规划发布</h3>
+      <div class="meta">
+        <span class="source-tag">中国青年网</span>
+        <a href="http://news.youth.cn/gn/202609/t20260928_16892207.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>新型电池包括锂离子电池、钠离子电池、固态电池、氢燃料电池等，是新能源汽车、储能电站、消费电子的核心部件。中国是全球最大的锂电池生产国，但面临锂资源对外依存度高、电池回收体系不完善等挑战。“十五五”规划（2026—2030年）旨在推动电池技术多元化、产业链自主可控和绿色循环。例如，钠离子电池成本低、资源丰富，适合储能；固态电池能量密度高，是下一代方向。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>为什么国家要专门为“电池”制定五年规划？一块电池背后，牵涉矿产开采、材料科学、制造工艺、回收环保和国际竞争。当我们推广电动汽车时，是否想过废旧电池去了哪里？如果电池回收不当，环保效益是否会被抵消？另一方面，技术路线之争（锂电vs钠电vs氢能）像一场“押注”，政府和企业如何避免“押错宝”？请从“创新”与“风险”的角度谈谈你的思考。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《化学》九年级上册第六单元·碳和碳的氧化物（电池材料相关）；人教版《地理》八年级上册第三章·中国的自然资源。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：你手机里的那块电池，可能来自青藏高原的盐湖，经过数千公里运输、数十道工序，最终成为你掌中的能量。而当它耗尽，又将去往何处？“十五五”新型电池产业规划，不仅要让电池更便宜、更耐用，还要回答一个更根本的问题：我们如何与资源相处？一块电池的旅程，折射的是一个国家绿色发展的决心与智慧。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🌟</div>
+      <h2>人物</h2>
+    </div>
+
+    <div class="overview">人物栏目虽条目不多，但各有亮点。"院士科普边疆行"活动把科学种子播撒到天山南北，以院士之光点亮青少年科学梦想。2026年"青年潜能"绿色发展创业营举办，关注青年创业与可持续发展。中国少年先锋队网作为常设平台，持续服务青少年成长。这些内容展现科学家、青年创业者等群体的担当与风采。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>以院士之光点亮青少年科学梦想 把科学种子播撒到天山南北——“院士科普边疆行”活动侧记</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzcg/xwy/wzxw/202609/t20260928_2111526052.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>院士是中国科学技术界的最高学术称号。院士科普边疆行活动组织院士走进新疆等边疆地区，为中小学生作科普报告、指导科学实验。这类活动旨在弥合东部与西部、城市与乡村的科学教育资源差距，激发青少年对科学的兴趣。科学家精神包括爱国、创新、求实、奉献、协同、育人。当院士用通俗语言讲解深奥知识，他们传递的不仅是知识，更是一种“科学可以亲近”的信念。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>为什么需要院士亲自去边疆做科普？看视频、读科普书不也能学科学吗？面对面交流的独特价值在哪里？当一位院士站在讲台上，他带来的不仅是知识，更是一种“榜样在场”的力量——让学生相信“我也可能成为这样的人”。另一方面，科普是否应该只靠少数科学家的公益行动？如何让优质科学教育资源常态化地流向边疆？请谈谈你对“教育公平”在科学领域的理解。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《道德与法治》七年级上册第一单元·成长的节拍（梦想）；人教版《科学》七年级上册绪论·科学并不神秘。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：当一位白发苍苍的院士走进新疆一所乡村中学的教室，孩子们的眼睛亮了。他没有讲复杂的公式，而是从“为什么天空是蓝色的”开始。那一刻，科学不再是课本上遥远的符号，而成为触手可及的奇迹。“院士科普边疆行”播下的不只是知识，更是一颗颗种子——关于好奇、关于梦想、关于“我也能探索未知”的勇气。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>2026年“青年潜能”绿色发展创业营举办</h3>
+      <div class="meta">
+        <span class="source-tag">中国青年网</span>
+        <a href="https://news.youth.cn/jsxw/202609/t20260928_16891386.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>绿色发展是以效率、和谐、持续为目标的经济增长方式，强调节能减排、循环利用和生态保护。“青年潜能”创业营旨在培养青年绿色创业能力，鼓励用商业手段解决环境问题，如垃圾分类回收、清洁能源、可持续农业等。这类活动呼应了国家“双碳”目标（碳达峰、碳中和）和联合国可持续发展目标。青年创业不仅创造经济价值，也推动社会创新。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>创业一定要追求利润最大化吗？如果一家企业既赚钱又保护环境，它是否比只赚钱的企业更“成功”？当青年选择绿色创业，他们面临的风险和机遇是什么？另一方面，环保常被认为“成本高、不划算”，但绿色创业营试图证明“环保可以是一门好生意”。你相信吗？请设想一个你身边的绿色创业点子，并分析它如何兼顾盈利与环保。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《道德与法治》九年级上册第四单元·建设美丽中国；人教版《地理》八年级上册第三章·中国的自然资源。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：一群年轻人围坐在一起，讨论的不是如何赚快钱，而是如何让外卖餐盒降解得更快、让旧衣服重新变成时尚。2026年“青年潜能”绿色发展创业营里，环保不再是口号，而是一份份商业计划书。他们相信：最好的环保，是让绿色成为一门可持续的生意。当青春遇见绿色，创造的不仅是财富，更是未来。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🍟</div>
+      <h2>时事薯条</h2>
+    </div>
+
+    
+
+    
+    
+    <div class="fries-grid">
+      
+      <div class="fries-card">
+        <div class="fries-title">中美元首会晤</div>
+        <div class="fries-comment">💬 大国相处新路在脚下，合作共赢是唯一正确选择。</div>
+        <span class="fries-knowledge">📚 和平共处五项原则是中国外交基石（政治·人教版八年级下册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">中国蝉联技能大赛榜首</div>
+        <div class="fries-comment">💬 技能成才同样精彩，一技之长可报国。</div>
+        <span class="fries-knowledge">📚 劳动创造价值，技能人才是宝贵资源（道德与法治·人教版九年级上册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">全球发展倡议成共识</div>
+        <div class="fries-comment">💬 从中国主张到国际共识，发展是解决一切问题的钥匙。</div>
+        <span class="fries-knowledge">📚 构建人类命运共同体理念（政治·人教版九年级下册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">灭绝植物罗浮紫珠发现</div>
+        <div class="fries-comment">💬 生物多样性保护需要持续努力，每一次发现都是希望。</div>
+        <span class="fries-knowledge">📚 生物多样性及其保护（生物·人教版八年级上册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">中秋爆款欧洲销量暴涨</div>
+        <div class="fries-comment">💬 文化走出去，月饼也能成为世界语言。</div>
+        <span class="fries-knowledge">📚 文化多样性及传播（政治·人教版九年级下册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">2亿年前蝈蝈嗓门研究</div>
+        <div class="fries-comment">💬 化石是时间的信使，古生物研究揭示演化奥秘。</div>
+        <span class="fries-knowledge">📚 生物进化证据——化石（生物·人教版八年级下册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">银发旅游适老又悦老</div>
+        <div class="fries-comment">💬 老龄化社会需要更多适老化设计，旅游也不例外。</div>
+        <span class="fries-knowledge">📚 人口老龄化及应对（地理·人教版八年级上册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">AI时代大学教育人技共鸣</div>
+        <div class="fries-comment">💬 技术是工具，人的全面发展才是教育目的。</div>
+        <span class="fries-knowledge">📚 教育信息化与终身学习（政治·人教版七年级下册）</span>
+      </div>
+      
+    </div>
+    
+
+    
+    
+  </section>
+  
+
+  <!-- ============ 副刊 ============ -->
+  
+  <section class="supplement">
+    <h2>🎭 副刊</h2>
+    <div class="topic">本期话题：技能成才与职业教育价值</div>
+    
+    <div class="perspective">
+      <div class="role">职业教育专家</div>
+      <p>中国蝉联世界技能大赛金牌榜榜首，说明我国职业教育水平正在快速提升。过去社会对职教存在偏见，认为只有成绩不好的学生才去职校。但事实上，技能人才是制造业强国的重要支撑。德国、瑞士等制造业强国，职业教育体系非常成熟，技术工人社会地位高、收入可观。我国正在推动职普融通、产教融合，让职业教育与普通教育具有同等重要地位。对中学生来说，无论选择哪条路，关键在于找到适合自己的发展方向，并持续精进。技能大赛的舞台证明，一技之长同样能赢得世界尊重。</p>
+    </div>
+    
+    <div class="perspective">
+      <div class="role">企业人力资源总监</div>
+      <p>从企业用人角度看，我们最缺的不是高学历，而是真正能解决实际问题的高技能人才。很多制造业企业开出高薪，却招不到合适的技工。世界技能大赛的获奖选手，往往还没毕业就被企业抢订。这说明市场对技能人才的需求是真实且旺盛的。同时，技术迭代很快，企业更看重学习能力和工匠精神，而不是一纸文凭。建议中学生在校期间多参与实践，培养动手能力和解决问题的思维。无论是继续升学还是进入职校，都要保持对新技术的好奇心，这样才能在未来的职场中立于不败之地。</p>
+    </div>
+    
+    <div class="perspective">
+      <div class="role">世界技能大赛获奖选手</div>
+      <p>我当初选择职校时，家人也有顾虑。但进入实训基地后，我发现技能训练并不简单，需要反复练习、精益求精。为了一个动作的精准，我练了成千上万遍。站上世界技能大赛领奖台的那一刻，我感受到的是被认可的尊严。技能让我找到了自信，也让我有能力回报社会。我想对学弟学妹说，不要被别人的偏见定义自己。如果你对动手操作感兴趣，职业教育是一条值得走的路。重要的是，你要热爱你所做的事，并愿意为之付出努力。技能可以改变命运，也可以为国家争光。</p>
+    </div>
+    
+  </section>
+  
+
+  <!-- ============ 观点碰撞 ============ -->
+  
+  <section class="debate">
+    <h2>⚔️ 观点碰撞</h2>
+    <div class="debate-topic">本期话题：AI时代，大学教育该重技术还是重人文？</div>
+    <div class="debate-sides">
+      
+      <div class="side side-a">
+        <span class="side-label">观点 A</span>
+        AI时代，大学教育应更加注重技术素养。人工智能正在重塑各行各业，掌握编程、数据分析、机器学习等技术能力，是学生未来就业的核心竞争力。大学应大幅增加AI相关课程，甚至将其设为必修课。技术素养不仅关乎个人发展，也关乎国家在全球科技竞争中的地位。如果大学不紧跟技术变革，培养的学生就可能被时代淘汰。因此，课程设置应向技术倾斜，人文课程可以适当压缩，让学生把更多精力投入到能直接转化为生产力的技能上。
+      </div>
+      
+      
+      <div class="side side-b">
+        <span class="side-label">观点 B</span>
+        AI时代，大学教育更应坚守人文底色。技术只是工具，而如何运用技术、如何判断技术的伦理边界，需要人文素养来指引。如果只重技术而忽视人文，培养出的可能是"精致的利己主义者"或"技术工具人"。历史、哲学、文学等学科能帮助学生理解人性、社会与价值，这是AI无法替代的。大学之道，在明明德，在亲民，在止于至善。技术可以外包给AI，但价值观和判断力必须由人来培养。因此，人文教育不仅不能压缩，反而应加强。
+      </div>
+      
+    </div>
+    
+    <div class="stance">
+      <span class="stance-label">🤔 AI 的立场</span>
+      双方观点各有其成立的前提。观点A的前提是：就业市场对技术人才需求旺盛，技术能力确实能带来直接的经济回报，且AI技术迭代速度快，不学就会落后。观点B的前提是：技术发展必须受到伦理约束，人文素养是人之为人的根本，且历史表明，忽视人文的技术教育曾带来灾难。实际上，两者并非非此即彼。理想的教育是"人技共鸣"——技术素养与人文精神相互滋养。大学应培养既懂技术又有人文关怀的复合型人才，而不是在两者之间做单选题。关键在于课程设计如何融合，而非简单取舍。
+    </div>
+    
+  </section>
+  
+
+  <!-- ============ 本周思考题 ============ -->
+  
+  <section class="discussion">
+    <h2>💡 本周思考题</h2>
+    <div class="question">从中国蝉联世界技能大赛金牌榜榜首这件事出发，你认为社会对"成功"的定义是否正在发生变化？</div>
+    
+    <div class="hints">
+      <div class="hints-title">🧭 思路提示</div>
+      <ul><li>传统观念中，考上名校、获得高学历常被视为成功的唯一路径。技能大赛获奖选手的成就，是否提供了另一种成功范本？</li><li>社会评价体系正在多元化，但偏见是否依然存在？你身边有没有"技能改变命运"的例子？</li><li>如果你面临升学与职业选择，你会如何权衡个人兴趣、社会需求与家长期待？</li></ul>
+    </div>
+    
+    
+    <div class="writing-tips">
+      <div class="hints-title">✍️ 写作建议</div>
+      <p>写作时可以先从新闻事实切入，简述中国技能大赛的成绩，然后提出"成功是否只有一种定义"的疑问。接着结合身边事例或社会现象展开分析，比如职校生的处境、企业招聘的变化等。最后落脚到个人思考：你如何理解成功？建议采用"引—议—联—结"的结构，避免空谈，多用具体细节支撑观点。字数控制在600-800字，观点明确，逻辑清晰。</p>
+    </div>
+    
+  </section>
+  
+
+  <footer>
+    <div><span class="brand">大少年新闻周报</span> · 每周六更新</div>
+    <div>由 DeepSeek 生成分析 · 数据来自新华网、人民网等公开新闻源</div>
+    <div>本报告仅供学习参考</div>
+  </footer>
+</div>
+</body>
+</html>
