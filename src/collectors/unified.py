@@ -54,7 +54,15 @@ class UnifiedCollector:
         return []
 
     def _from_rss(self, url: str) -> List[NewsItem]:
-        feed = feedparser.parse(url)
+        """先用 requests 加超时获取内容，再交给 feedparser 解析。
+
+        注意：feedparser.parse(url) 直接传 URL 时内部没有超时控制，
+        遇到网络卡住会永久等待，必须先用 requests 拉取。
+        """
+        resp = requests.get(url, headers=HEADERS, timeout=10)
+        resp.raise_for_status()
+        feed = feedparser.parse(resp.content)
+
         out: List[NewsItem] = []
         for entry in feed.entries:
             title = (entry.get("title") or "").strip()
@@ -100,7 +108,7 @@ class UnifiedCollector:
 
     @staticmethod
     def _get(url: str) -> requests.Response:
-        return requests.get(url, headers=HEADERS, timeout=15)
+        return requests.get(url, headers=HEADERS, timeout=10)
 
 
 def build_collectors() -> List[UnifiedCollector]:
