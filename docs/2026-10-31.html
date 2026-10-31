@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大少年新闻周报 · 2026-10-31</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5; color: #1a1a1a; line-height: 1.75;
+    padding: 16px; -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 820px; margin: 0 auto; }
+
+  /* ===== 封面 ===== */
+  .cover {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb347 100%);
+    color: #fff; padding: 44px 34px; border-radius: 20px;
+    margin-bottom: 26px; box-shadow: 0 12px 32px rgba(255,107,53,0.22);
+    position: relative; overflow: hidden;
+  }
+  .cover::before {
+    content: ""; position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .cover::after {
+    content: ""; position: absolute; bottom: -80px; right: 60px;
+    width: 140px; height: 140px; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .cover-badge {
+    display: inline-block; background: rgba(255,255,255,0.22);
+    padding: 5px 14px; border-radius: 20px; font-size: 13px;
+    margin-bottom: 16px; backdrop-filter: blur(4px);
+  }
+  .cover h1 { font-size: 32px; margin-bottom: 18px; letter-spacing: 1px; }
+  .cover .headline {
+    font-size: 19px; line-height: 1.6; font-weight: 500;
+    padding: 16px 20px; background: rgba(255,255,255,0.16);
+    border-radius: 12px; margin-bottom: 20px; backdrop-filter: blur(4px);
+  }
+  .cover .keywords { margin-bottom: 22px; }
+  .cover .keyword {
+    display: inline-block; background: rgba(255,255,255,0.28);
+    padding: 4px 12px; border-radius: 14px; font-size: 13px;
+    margin: 0 8px 8px 0;
+  }
+  .cover .points { list-style: none; }
+  .cover .points li {
+    padding: 8px 0 8px 24px; position: relative; font-size: 15px;
+    border-bottom: 1px dashed rgba(255,255,255,0.2);
+  }
+  .cover .points li:last-child { border-bottom: none; }
+  .cover .points li::before {
+    content: "▸"; position: absolute; left: 0; opacity: 0.85;
+  }
+
+  /* ===== 栏目 ===== */
+  .category {
+    background: #fff; border-radius: 20px; padding: 34px 32px;
+    margin-bottom: 24px; box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+  }
+  .category-title {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px; padding-bottom: 16px;
+    border-bottom: 2px solid #f5f5f5;
+  }
+  .category-title .icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; background: linear-gradient(135deg, #ff6b35, #f7931e);
+    box-shadow: 0 4px 12px rgba(255,107,53,0.25);
+  }
+  .category-title h2 { font-size: 22px; color: #ff6b35; font-weight: 700; }
+
+  .overview {
+    background: linear-gradient(135deg, #fff8f3 0%, #fff3ec 100%);
+    padding: 20px 22px; border-radius: 14px; margin-bottom: 26px;
+    font-size: 15px; color: #444; line-height: 1.8;
+    border-left: 4px solid #ffb347;
+  }
+
+  /* ===== 重点新闻 ===== */
+  .highlight {
+    padding-top: 24px; margin-top: 24px; border-top: 1px dashed #ebeef2;
+  }
+  .highlight:first-of-type { padding-top: 0; margin-top: 0; border-top: none; }
+  .highlight h3 {
+    font-size: 18px; margin-bottom: 10px; line-height: 1.5; color: #222;
+  }
+  .highlight .meta {
+    font-size: 13px; color: #999; margin-bottom: 18px;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .highlight .meta .source-tag {
+    background: #f5f5f5; color: #666; padding: 2px 10px;
+    border-radius: 10px; font-size: 12px;
+  }
+  .highlight .meta a { color: #ff6b35; text-decoration: none; font-weight: 500; }
+  .highlight .meta a:hover { text-decoration: underline; }
+
+  .dimension {
+    margin-bottom: 12px; padding: 14px 18px;
+    background: #fafbfc; border-radius: 12px;
+    border-left: 4px solid #ddd; transition: background 0.2s;
+  }
+  .dimension:hover { background: #f5f7fa; }
+  .dimension .label {
+    font-weight: 600; font-size: 13px; margin-bottom: 6px;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .dimension p { font-size: 14px; color: #333; line-height: 1.8; }
+  .dimension.knowledge { border-left-color: #4a90e2; }
+  .dimension.knowledge .label { color: #4a90e2; }
+  .dimension.history { border-left-color: #8e6e53; }
+  .dimension.history .label { color: #8e6e53; }
+  .dimension.global { border-left-color: #16a085; }
+  .dimension.global .label { color: #16a085; }
+  .dimension.thinking { border-left-color: #9b59b6; }
+  .dimension.thinking .label { color: #9b59b6; }
+  .dimension.subject { border-left-color: #27ae60; }
+  .dimension.subject .label { color: #27ae60; }
+  .dimension.writing { border-left-color: #e67e22; }
+  .dimension.writing .label { color: #e67e22; }
+
+  /* ===== 时事薯条 ===== */
+  .fries-grid {
+    display: grid; grid-template-columns: 1fr; gap: 12px;
+  }
+  .fries-card {
+    background: #fffdf5; border-radius: 12px; padding: 14px 18px;
+    border-left: 4px solid #f5b041;
+  }
+  .fries-card .fries-title {
+    font-size: 15px; font-weight: 600; color: #333; margin-bottom: 6px;
+  }
+  .fries-card .fries-comment {
+    font-size: 13px; color: #666; margin-bottom: 6px;
+  }
+  .fries-card .fries-knowledge {
+    font-size: 12px; color: #d68910;
+    background: #fff8e6; padding: 4px 10px; border-radius: 8px;
+    display: inline-block;
+  }
+
+  /* ===== 副刊 ===== */
+  .supplement {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #fff; border-radius: 20px; padding: 36px 32px;
+    margin-bottom: 24px; box-shadow: 0 8px 24px rgba(44,62,80,0.2);
+  }
+  .supplement h2 {
+    font-size: 24px; margin-bottom: 10px; display: flex;
+    align-items: center; gap: 10px; color: #fff;
+  }
+  .supplement .topic {
+    font-size: 15px; opacity: 0.85; margin-bottom: 26px;
+    padding-left: 34px;
+  }
+  .perspective {
+    background: rgba(255,255,255,0.08); border-radius: 14px;
+    padding: 20px 22px; margin-bottom: 14px;
+    border-left: 3px solid #ffb347;
+    backdrop-filter: blur(4px);
+  }
+  .perspective:last-child { margin-bottom: 0; }
+  .perspective .role {
+    font-size: 13px; font-weight: 600; color: #ffb347;
+    margin-bottom: 8px; letter-spacing: 0.5px;
+  }
+  .perspective p { font-size: 14px; line-height: 1.85; color: #eaeaea; }
+
+  /* ===== 观点碰撞 ===== */
+  .debate {
+    background: #fff; border-radius: 20px; padding: 34px 32px;
+    margin-bottom: 24px; box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+  }
+  .debate h2 {
+    font-size: 22px; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 10px; color: #c0392b;
+  }
+  .debate .debate-topic {
+    font-size: 16px; color: #555; margin-bottom: 24px;
+    padding-left: 34px;
+  }
+  .debate-sides {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 640px) {
+    .debate-sides { grid-template-columns: 1fr; }
+  }
+  .side {
+    padding: 18px 20px; border-radius: 14px; font-size: 14px; line-height: 1.8;
+  }
+  .side-a {
+    background: #eaf4fd; border-left: 4px solid #3498db; color: #2c3e50;
+  }
+  .side-b {
+    background: #fdeaea; border-left: 4px solid #e74c3c; color: #2c3e50;
+  }
+  .side .side-label {
+    font-weight: 700; font-size: 13px; margin-bottom: 8px; display: block;
+  }
+  .side-a .side-label { color: #3498db; }
+  .side-b .side-label { color: #e74c3c; }
+  .stance {
+    background: #f8f9fa; padding: 18px 20px; border-radius: 14px;
+    border-left: 4px solid #95a5a6; font-size: 14px; line-height: 1.8;
+    color: #444;
+  }
+  .stance .stance-label {
+    font-weight: 700; font-size: 13px; color: #7f8c8d;
+    margin-bottom: 8px; display: block;
+  }
+
+  /* ===== 思考题 ===== */
+  .discussion {
+    background: linear-gradient(135deg, #fffbea 0%, #fff5d6 100%);
+    border-radius: 20px; padding: 34px 32px; margin-bottom: 24px;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+    border: 1px solid #ffe4a8;
+  }
+  .discussion h2 {
+    font-size: 22px; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px; color: #d68910;
+  }
+  .discussion .question {
+    font-size: 17px; font-weight: 600; color: #333;
+    padding: 18px 20px; background: #fff; border-radius: 12px;
+    margin-bottom: 20px; line-height: 1.7;
+    border-left: 4px solid #f5b041;
+  }
+  .hints-title {
+    font-size: 14px; font-weight: 600; color: #d68910;
+    margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+  }
+  .hints ul { list-style: none; margin-bottom: 20px; }
+  .hints li {
+    padding: 8px 0 8px 22px; position: relative;
+    font-size: 14px; color: #555;
+  }
+  .hints li::before {
+    content: "○"; position: absolute; left: 0; color: #f5b041;
+    font-weight: bold;
+  }
+  .writing-tips {
+    background: #fff; border-radius: 12px; padding: 16px 20px;
+  }
+  .writing-tips p { font-size: 14px; color: #555; line-height: 1.8; }
+
+  /* ===== 页脚 ===== */
+  footer {
+    text-align: center; color: #999; font-size: 13px;
+    padding: 32px 0 12px; line-height: 1.8;
+  }
+  footer .brand { color: #ff6b35; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ============ 封面导读 ============ -->
+  
+  <header class="cover">
+    <div class="cover-badge">📅 2026-10-31 · 每周六更新</div>
+    <h1>📰 大少年新闻周报</h1>
+    <div class="headline">党的二十届五中全会部署全面从严治党，长征精神与红色教育贯穿本周</div>
+    
+    <div class="keywords">
+      <span class="keyword"># 二十届五中全会</span><span class="keyword"># 长征精神</span><span class="keyword"># 红色教育</span><span class="keyword"># 体育强国</span><span class="keyword"># 青少年成长</span>
+    </div>
+    
+    
+    <ul class="points">
+      <li>二十届五中全会审议通过全面从严治党决定</li><li>长征胜利90周年，多地学校开展红色研学</li><li>中国造船业持续领跑全球，出口首破8万亿</li><li>2027年女排世界杯分组揭晓，中国女排争奥运门票</li><li>青少年心理安全论坛聚焦成长话题</li>
+    </ul>
+    
+  </header>
+  
+
+  <!-- ============ 各栏目 ============ -->
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🔥</div>
+      <h2>头条</h2>
+    </div>
+
+    <div class="overview">本周头条聚焦党的二十届五中全会，会议审议通过《中共中央关于持之以恒推进全面从严治党若干重大问题的决定》，习近平总书记主持党外人士座谈会并发表重要讲话。同时，习近平会见瑞士联邦主席、同德国总统会谈，展现中国外交的活跃态势。此外，第十一次全国台湾同胞代表会议在京召开，乡村振兴责任制实施办法公布，疫情防控转段平稳有序推进。这些新闻共同勾勒出国家政治生活的主线：坚持党的领导、推进国家治理现代化、深化对外开放。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>党的二十届五中全会审议通过《中共中央关于持之以恒推进全面从严治党若干重大问题的决定》</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/xtt/202610/t20261030_20064112.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>党的二十届五中全会是中国共产党在2026年召开的一次重要会议，全会审议通过了关于持之以恒推进全面从严治党的决定。全面从严治党是“四个全面”战略布局的重要组成部分，核心是加强党的领导，基础在全面，关键在严，要害在治。这次全会强调“持之以恒”，意味着反腐败斗争和作风建设不会放松，而是持续深入。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>中国共产党自成立以来就重视纪律建设。从延安时期的整风运动，到改革开放初期的整党，再到十八大以来的全面从严治党，反腐倡廉一脉相承。2012年中央八项规定出台，2018年国家监察委员会成立，制度笼子越扎越紧。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>许多国家都有反腐败机构，如新加坡贪污调查局、香港廉政公署。中国共产党以自我革命精神推进反腐败，力度大、成效显著，得到人民广泛支持。中国还积极参与全球反腐败治理，推动构建廉洁丝绸之路。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>全面从严治党为什么需要“持之以恒”？可以从权力监督的长期性、腐败问题的顽固性、民心所向等角度思考。也可以讨论：在校园生活中，如何理解“规则”和“自律”的重要性？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版八年级下册第三单元·人民当家作主（涉及国家机构、监察委员会）；高中思想政治必修3《政治与法治》第三单元·全面依法治国、第四单元·中国共产党的领导。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可用于“规则与自律”“初心与坚守”等主题作文。开头示例：古人云：“没有规矩，不成方圆。”一个政党要永葆生机，离不开严明的纪律；一个社会要和谐有序，离不开共同的规则。最近召开的党的二十届五中全会，再次强调了“持之以恒推进全面从严治党”，这让我想到，无论是国家治理还是个人成长，都需要一份对规则的敬畏和对初心的坚守。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>习近平同德国总统施泰因迈尔会谈</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/pic/yctp/202610/t20261031_20064278.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>国家主席习近平与德国总统施泰因迈尔举行会谈，这是中德高层交往的重要事件。德国是欧洲最大经济体，中国是亚洲最大经济体，两国关系对中欧乃至全球都有重要影响。会谈通常涉及双边贸易、气候变化、国际热点问题等。总统是德国国家元首，但实权在总理，不过总统在象征性和外交层面有重要作用。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>中德1972年建交，此后关系总体发展顺利。2014年两国建立全方位战略伙伴关系。默克尔执政期间多次访华，推动经贸合作。近年来，德国提出“时代转折”，调整对华政策，但双方仍保持对话合作。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>德国是欧盟核心成员国，中国连续多年是德国最大贸易伙伴。中德合作对维护多边主义和自由贸易具有重要意义。与一些国家搞“脱钩断链”不同，中德强调对话与合作，为大国关系提供了范例。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>在国际交往中，为什么“对话”比“对抗”更受欢迎？可以结合中德经贸互补性、全球性问题需要合作等角度思考。也可以讨论：作为青少年，如何培养开放包容的国际视野？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版九年级下册第一单元·我们共同的世界（经济全球化、世界多极化）；高中思想政治选择性必修1《当代国际政治与经济》第二单元·世界多极化。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可用于“合作共赢”“开放包容”等主题作文。开头示例：当习近平主席与德国总统施泰因迈尔的手握在一起，世界再次看到对话的力量。在充满不确定性的时代，两个大国选择坐下来谈，而不是背对背走，这本身就是一种智慧。合作共赢，不是一句口号，而是需要行动和诚意的选择。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🇨🇳</div>
+      <h2>中国</h2>
+    </div>
+
+    <div class="overview">本周中国栏目内容丰富，既有对四渡赤水等长征历史的回顾，也有对全面从严治党原则的阐释。乌镇之约展现开放姿态，以旧换新政策带动消费超2万亿元，各地重大水利工程加快建设。童心视角下子弟兵坚守的模样、方寸板房装满爱与童真等报道，传递出温暖的人文关怀。《Hello！新疆》微综艺预告片发布，呈现真实多元的新疆。这些新闻从政治、经济、社会、文化多角度展现中国发展的活力与温度。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>四渡赤水的“神级微操”如何做到的？</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/roll/202610/t20261030_20064157.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>四渡赤水是红军长征中的经典战例。1935年1月至3月，中央红军在毛泽东等指挥下，在贵州、四川、云南交界的赤水河畔四次渡河，灵活机动，摆脱了国民党军队的围追堵截。所谓“微操”是网络用语，指精细的指挥操作，这里形容红军高超的战术指挥艺术。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>遵义会议后，毛泽东重新获得军事指挥权。面对40万敌军，红军只有3万余人，毛泽东利用敌人矛盾，声东击西，四渡赤水，佯攻贵阳，威逼昆明，最终巧渡金沙江，跳出包围圈。这是长征中最惊心动魄的篇章之一。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>四渡赤水被许多军事院校列为经典战例，与汉尼拔翻越阿尔卑斯山、拿破仑奥斯特里茨战役等齐名。它体现了“以弱胜强”的军事辩证法，受到中外军事家的高度评价。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>四渡赤水的胜利，除了指挥艺术，还离不开什么？比如情报工作、红军战士的英勇、群众支持等。可以思考：在学习和生活中，面对强大对手或困难时，如何灵活应变、扬长避短？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版八年级上册第五单元·从国共合作到国共对立（红军长征）；高中历史必修中外历史纲要（上）第八单元·中华民族的抗日战争和人民解放战争（长征部分）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可用于“智慧与勇气”“逆境中的创新”等主题作文。开头示例：在赤水河畔，一支疲惫的红军队伍用四次渡河，把敌人耍得团团转。这不是神话，而是真实的历史。四渡赤水的“神级微操”告诉我们：面对强敌，硬拼未必是上策，智慧和勇气结合，才能创造奇迹。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>今年以来以旧换新带动相关品类销售额超2万亿元</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/zxbd/202610/t20261030_20064153.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>以旧换新是鼓励消费者用旧产品折价换购新产品的政策，旨在促进消费、推动产业升级和绿色发展。2026年以来，该政策带动相关品类销售额超过2万亿元，涉及家电、汽车、电子产品等。这既刺激了内需，又有利于资源回收利用。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>中国曾多次推出家电下乡、汽车下乡等刺激消费政策。2024年国务院印发《推动大规模设备更新和消费品以旧换新行动方案》，以旧换新成为扩内需的重要抓手。政策不断优化，覆盖范围扩大。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>许多国家有类似政策，如德国对旧车置换给予补贴，日本推行环保积分制度。中国以旧换新政策规模大、覆盖广，体现了超大规模市场优势，也为全球绿色消费提供了中国方案。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>以旧换新政策有哪些好处？可能促进消费、减少浪费、推动技术进步。但也可能带来过度消费、电子垃圾等问题。可以讨论：作为消费者，如何理性看待“换新”？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版九年级下册第二单元·我们共同的世界（经济全球化、可持续发展）；高中思想政治必修2《经济与社会》第三单元·经济发展与社会进步。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可用于“绿色生活”“消费与责任”等主题作文。开头示例：家里的旧电视、旧冰箱，你是扔了还是卖了？如今，以旧换新政策让它们有了更好的去处。今年以来，这项政策带动销售额超2万亿元，数字背后是消费活力的释放，也是绿色理念的普及。换新，不只是换一件物品，更是换一种生活方式。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🌍</div>
+      <h2>世界</h2>
+    </div>
+
+    <div class="overview">本周世界栏目关注全球治理与中外交流。中国品牌凭实力海外圈粉，造船业持续领跑全球，展现中国制造竞争力。韩正将赴法国出席联合国海洋大会，任友群会见俄罗斯圣彼得堡市副市长，中外教育交流持续推进。国际金价跌破每盎司3900美元，美使馆要求非紧急岗位人员离开沙特，反映国际金融与地缘政治动态。外国人入境游再升温，海外游客解锁来华新玩法，中国旅游吸引力持续增强。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>中国品牌凭实力海外圈粉</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/roll/202610/t20261029_20064035.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>中国品牌在海外越来越受欢迎，从华为、小米到比亚迪、海尔，中国制造正转向中国创造。凭借技术创新、性价比和本地化策略，中国品牌在全球市场赢得消费者。这背后是中国产业链的完善和研发投入的增加。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>改革开放初期，中国制造以代工为主，缺乏自主品牌。加入WTO后，中国企业开始走出去。近年来，随着高铁、5G、新能源等领域的突破，中国品牌形象大幅提升。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>韩国三星、日本索尼、美国苹果都是全球品牌典范。中国品牌在部分领域已实现赶超，如新能源汽车、无人机。但整体上，中国品牌在高端市场和品牌溢价方面仍有提升空间。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>中国品牌靠什么“圈粉”？是价格、质量还是创新？可以讨论：品牌建设中，技术和文化哪个更重要？作为消费者，你会因为“国货”而自豪吗？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版九年级下册第一单元·我们共同的世界（经济全球化）；高中思想政治必修2《经济与社会》第三单元·经济发展与社会进步（建设现代化经济体系）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可用于“创新与品牌”“中国自信”等主题作文。开头示例：在巴黎的街头，有人用着小米手机；在挪威的港口，比亚迪电动巴士穿梭往来。中国品牌正以实力赢得世界的掌声。从“中国制造”到“中国创造”，背后是无数工程师的日夜攻关，也是中国产业升级的生动注脚。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>国际金价跌破每盎司3900美元</h3>
+      <div class="meta">
+        <span class="source-tag">中国青年网</span>
+        <a href="https://news.youth.cn/gj/202610/t20261031_16942293.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>黄金是重要的避险资产，金价波动受全球经济形势、货币政策、地缘政治等多重因素影响。国际金价跌破每盎司3900美元，可能反映市场对经济前景的预期变化或美元走强。黄金以美元计价，美元升值通常压制金价。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>二战后建立布雷顿森林体系，黄金与美元挂钩，35美元兑换1盎司黄金。1971年美国宣布美元与黄金脱钩，金价自由浮动。2008年金融危机后金价大涨，2020年突破2000美元，近年波动加剧。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>各国央行黄金储备是金融安全的重要屏障。美国、德国黄金储备最多，中国也在增加黄金储备。金价波动对黄金生产国和消费国影响不同，印度和中国是黄金消费大国。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>金价下跌对普通人有什么影响？可能意味着避险情绪降温，经济预期改善，但也可能影响黄金投资者。可以讨论：投资黄金是稳赚不赔吗？如何理性看待投资风险？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版九年级下册第一单元·我们共同的世界（经济全球化）；高中思想政治必修1《中国特色社会主义》第四课·社会主义初级阶段的经济制度（货币、金融）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可用于“理性投资”“经济与生活”等主题作文。开头示例：最近，国际金价跌破每盎司3900美元，有人欢喜有人愁。黄金，这个人类追逐了几千年的金属，依然牵动着世界的神经。但投资不是赌博，理性看待涨跌，才能让财富真正保值增值。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🔬</div>
+      <h2>科学</h2>
+    </div>
+
+    <div class="overview">本周科学栏目兼顾基础研究与民生科普。金观平文章强调有的放矢提高基础研究实力，2亿年前蝈蝈嗓门有多高的化石研究登上《美国科学院院报》，展现古生物学魅力。航天员陈冬、刘洋、蔡旭哲分别准备6年、10年、12年再次飞天，诠释坚持的力量。疫情防控方面，多篇科学防疫小贴士关注老年人疫苗接种、心血管病患者防护等，国家卫健委发布第二剂次加强免疫接种方案。前门小学科技节启动，激发少年科学梦想。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>2亿年前蝈蝈嗓门有多高？化石研究得出答案</h3>
+      <div class="meta">
+        <span class="source-tag">新华网</span>
+        <a href="http://www.news.cn/politics/2022-12/14/c_1129206396.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>中国科学院南京地质古生物研究所的科研人员通过对全球1000多块螽斯化石的研究，重建了2.4亿年前螽斯的鸣声频率。螽斯是蝈蝈的学名，它们通过摩擦翅膀发声。这项研究有助于理解昆虫声学通讯的演化。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>古生物学通过化石研究远古生物。螽斯化石罕见保存发声器官，这项研究利用形态学推断功能，是古生物学与物理学的交叉。相关成果发表于《美国科学院院报》。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>古生物研究是国际竞争与合作的重要领域。中国在澄江生物群、热河生物群等化石研究中成果丰硕。国际合作使科学家能获取全球标本，推动学科发展。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>科学家如何从化石推断声音？这需要多学科知识。可以思考：科学研究中，想象力和证据哪个更重要？基础研究看似“无用”，却可能带来意想不到的发现。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版八年级上册第五单元·生物圈中的其他生物（昆虫）；高中生物必修2《遗传与进化》第5章·生物的进化。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可用于“科学探索”“好奇心”等主题作文。开头示例：2亿年前，一只蝈蝈在森林里鸣叫，声音有多大？科学家通过化石找到了答案。这听起来像科幻，却是真实的科学研究。好奇心驱动人类不断追问，而科学，就是回答这些问题的钥匙。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>国家卫健委发布新冠病毒疫苗第二剂次加强免疫接种实施方案</h3>
+      <div class="meta">
+        <span class="source-tag">新华网</span>
+        <a href="http://www.news.cn/politics/2022-12/14/c_1129207117.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>第二剂次加强免疫即“第四针”，针对已完成第一剂次加强免疫的人群，尤其是感染高风险人群、60岁以上老年人和有严重基础性疾病者。方案明确了接种时间间隔、疫苗选择等，旨在进一步筑牢免疫屏障。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>新冠疫苗研发创下历史纪录。2020年底中国启动重点人群接种，2021年开展加强免疫，2022年推出第二剂次加强。随着病毒变异，免疫策略不断优化。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>各国根据疫情形势调整接种策略。以色列较早推广第四针，美国、欧洲也批准了更新版疫苗。中国坚持科学精准防控，疫苗接种覆盖率全球领先。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>为什么需要不断接种加强针？因为抗体水平会下降，病毒会变异。可以讨论：公共卫生政策如何平衡个人自由与集体安全？接种疫苗既是保护自己，也是保护他人。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版八年级下册第八单元·健康地生活（传染病及其预防）；高中生物必修1《分子与细胞》第4章·细胞的物质输入和输出（免疫部分）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可用于“责任与担当”“科学防疫”等主题作文。开头示例：当国家卫健委发布第二剂次加强免疫接种方案时，很多人问：为什么还要打？答案很简单：病毒在变，我们的防护也要升级。每一针疫苗，都是对自己和他人健康的承诺。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🎨</div>
+      <h2>文化</h2>
+    </div>
+
+    <div class="overview">本周文化栏目以红色文化传承为主线。在文化浸润中筑牢“不想腐”的堤坝，汲取长征历史中的奋进智慧，历史融入课堂讲台接续薪火，永葆赶考清醒赢得历史主动，多篇文章从不同角度阐释红色文化的当代价值。97.0%受访家长会主动和孩子聊红色历史，显示红色教育深入人心。台湾光复81周年报道强调“文化、亲情的纽带从未断过”。甘肃静宁新城小学以“星辰文化”滋养精神新城，体育文化传承与发展大会举办，展现文化多样性。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>汲取长征历史中的奋进智慧和力量</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202610/t20261029_2111536055.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>长征是1934年至1936年红军主力从长江南北各苏区向陕甘革命根据地的战略转移，行程二万五千里，跨越11个省。长征精神包括坚定信念、不怕牺牲、独立自主、顾全大局、紧密团结等。文章强调从长征历史中汲取智慧和力量，用于新时代奋进。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>由于第五次反“围剿”失败，红军被迫长征。遵义会议确立了毛泽东的领导地位，四渡赤水、飞夺泸定桥、爬雪山过草地，最终在陕北会师。长征保存了革命火种，铸就了长征精神。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>长征被许多外国学者视为军事奇迹。美国记者斯诺的《红星照耀中国》让世界了解长征。长征精神也激励着亚非拉民族解放运动。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>长征精神对今天有什么意义？学习上遇到困难时，如何发扬“不怕远征难”的精神？可以讨论：新时代的“长征”是什么？我们如何走好新的长征路？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版八年级上册第五单元·从国共合作到国共对立（红军长征）；高中历史必修中外历史纲要（上）第八单元·中华民族的抗日战争和人民解放战争。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可用于“传承精神”“奋斗”等主题作文。开头示例：二万五千里，是地图上的距离，更是精神的高度。长征路上，红军战士用双脚丈量信仰，用鲜血铸就丰碑。今天，我们不用爬雪山过草地，但每个人都有自己的“长征”。汲取长征的智慧和力量，我们才能走好新时代的路。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>97.0%受访家长会主动和孩子聊红色历史</h3>
+      <div class="meta">
+        <span class="source-tag">中国青年网</span>
+        <a href="http://news.youth.cn/sh/202610/t20261029_16938630.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>一项调查显示，97.0%的受访家长会主动和孩子聊红色历史，说明家庭教育中红色文化传承受到重视。红色历史指中国共产党领导人民进行革命、建设、改革的历史，包括党史、新中国史、改革开放史、社会主义发展史。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>红色教育一直是青少年思想政治教育的重要内容。从小学的少先队活动到中学的历史课程，红色基因代代相传。近年来，红色旅游、红色影视作品也受到欢迎。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>许多国家重视爱国主义教育，如美国的历史纪念日、法国的公民教育。中国红色教育注重历史与现实的结合，强调传承与创新。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>家长和孩子聊红色历史，有什么好处？可以增进亲子沟通，培养家国情怀。但也要注意方式方法，避免说教。可以讨论：你更喜欢通过什么方式了解红色历史？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版八年级上册第五单元·从国共合作到国共对立；道德与法治九年级上册第四单元·和谐与梦想（中国梦）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可用于“家风传承”“红色基因”等主题作文。开头示例：晚饭桌上，爸爸讲起太爷爷参加长征的故事，孩子听得入了迷。这样的场景，在97.0%的家庭中发生。红色历史不是枯燥的课本，而是祖辈的亲身经历。当家长愿意讲，孩子愿意听，红色基因就在家常话里代代相传。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">📖</div>
+      <h2>教育</h2>
+    </div>
+
+    <div class="overview">本周教育栏目关注立德树人与教育治理。安徽开放大学以伟大长征精神点亮“开学第一课”，启迪大学生走好新的长征路，四川乐山大学生走进非遗基地开展研学实践。劳动教育本该生动有趣，职业院校做好专业“加减法”，选优配强中小学校领导班子，加强和改进中小学校领导人员管理。合肥反诈宣传进校园，浙江东阳校园足球快乐逐梦。全国教育辟谣平台上线，全国教育大会两周年专题回顾，展现教育系统全面推进从严治党、建设教育强国的努力。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>安徽开放大学：以伟大长征精神点亮“开学第一课”</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/roll/202610/t20261026_20063646.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>长征精神是中国共产党在二万五千里长征中创造的革命精神，其核心内涵包括坚定革命理想和信念、不怕艰难险阻、坚持独立自主实事求是、顾全大局严守纪律、紧紧依靠人民群众。安徽开放大学将其融入“开学第一课”，旨在通过重温长征历史，引导学生在新时代传承红色基因，理解艰苦奋斗与集体主义的意义。这与当前教育强调立德树人、厚植家国情怀的方向一致。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>将长征精神作为开学第一课的主题，是“以史育人”的生动实践。但如何避免宏大叙事流于形式？关键在于让学生从历史细节中感受真实的人性力量，比如红军战士的日常选择与牺牲。学生可以思考：和平年代的“长征”是什么？是攻克学业难关，还是参与社会公益？精神传承需要与个人生活经验对接，才能内化为行动自觉。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>历史（统编版）八年级上册第五单元·从国共合作到国共对立（红军长征）；道德与法治（统编版）九年级上册第四单元·和谐与梦想（民族精神）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：当开学第一课的铃声响起，安徽开放大学的教室里没有枯燥的说教，而是一幅幅长征途中的老照片。屏幕上的红军战士穿着草鞋，翻越雪山，他们的眼神坚定而明亮。老师问：“如果穿越到那个年代，你会是队伍里的谁？”同学们沉默了。长征精神不是遥远的传说，它正通过这堂课，悄悄走进我们的心里。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>劳动教育本该生动有趣</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202610/t20261030_2111536643.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>劳动教育是中国特色社会主义教育制度的重要内容，旨在培养学生正确的劳动价值观和良好劳动品质。2020年教育部印发《大中小学劳动教育指导纲要（试行）》，要求将劳动教育纳入人才培养全过程。当前一些学校存在劳动教育形式化、说教化问题，文章倡导通过项目式学习、校园农场、社区服务等实践方式，让劳动课“活”起来，真正激发学生的参与感和创造力。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>劳动教育为何有时变得“无趣”？可能因为被简化为打卡任务或技能训练，忽视了劳动中的合作、探究与成就感。真正的劳动教育应让学生经历完整的问题解决过程，比如设计校园菜园、策划义卖活动。学生可以反思：自己参与过哪些印象深刻的劳动？它带来了什么改变？劳动不仅是出汗，更是动脑和用心的过程。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>道德与法治（统编版）八年级上册第三单元·勇担社会责任（劳动与社会责任）；综合实践活动（人教版）七年级·设计与制作。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：上周，我们班的劳动课是去校园角落拔草。本以为十分钟就能搞定，结果大家蹲了半节课，手上沾满泥巴，却只清理了一小片。老师笑着说：“别急，下周我们在这里种上向日葵。”那一刻，拔草不再是任务，而成了期待。原来，劳动教育的秘密，就藏在“让事情变得有意义”里。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">⚽</div>
+      <h2>体育</h2>
+    </div>
+
+    <div class="overview">本周体育栏目涵盖校园体育、竞技体育、群众体育和体育产业。湖南永州班级足球赛绿茵展风采，江苏睢宁亚运冠军进校园，激发青少年运动热情。2027年女排世界杯分组揭晓，中国女排再争“奥运门票”，洛杉矶奥运会和残奥会官方口号公布。第五届全国老年人体育健身大会闭幕，江西户外运动大会释放体育消费潜力，川渝群众体育书写双城融合新答卷。上半年国产体育品牌承压觅新机，广东体博会将打造沉浸式体育盛宴，体育产业多元发展。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>江苏睢宁：亚运冠军进校园</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzcg/xwy/tpxw/202610/t20261026_2111534976.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>亚运冠军进校园活动是体教融合的重要形式，通过冠军运动员分享成长经历、展示运动技能，激发青少年对体育的兴趣。这类活动不仅传递拼搏精神，还帮助学生理解竞技体育背后的科学训练、团队合作与心理调节。近年来，国家体育总局与教育部联合推动“冠军进校园”，旨在发挥体育的育人功能，促进青少年身心健康全面发展。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>冠军的光环容易让人只看到领奖台上的荣耀，而忽略背后的汗水与挫折。当冠军走进校园，学生应关注什么？是他们如何面对失败、如何平衡训练与学习、如何与队友协作。这启发我们：榜样教育的价值不在于崇拜，而在于汲取可迁移的品质。学生可以思考：如果自己遇到瓶颈，能否像运动员一样拆解目标、坚持练习？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>体育与健康（人教版）八年级全一册·体育精神与运动参与；道德与法治（统编版）七年级下册第四单元·走进法治天地（规则与公平竞争）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：当亚运冠军走进睢宁的中学操场，同学们本以为会看到一场炫技表演，没想到冠军先讲起了自己第一次比赛倒数第一的故事。他说：“那天我哭了一路，但第二天还是去了训练场。”操场上安静了几秒，然后响起掌声。原来，冠军不是从不失败，而是失败后依然选择站起来。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>上半年国产体育品牌承压觅新机</h3>
+      <div class="meta">
+        <span class="source-tag">华奥星空</span>
+        <a href="https://www.sports.cn/tcdt/tctyyx/2026/0903/707008.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>国产体育品牌如安踏、李宁、特步等，近年来在运动鞋服市场与国际品牌展开竞争。2026年上半年，受消费环境变化、库存压力等因素影响，部分品牌业绩承压，但也在通过科技创新、国潮设计、细分品类（如跑步、户外）寻找新增长点。体育用品业是体育产业的重要组成部分，其发展折射出居民消费升级与制造业转型的趋势。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>国产体育品牌如何从“性价比”走向“品牌力”？面对国际巨头和新兴品牌的夹击，它们需要平衡短期销量与长期研发。学生可以思考：自己选购运动鞋时更看重什么？是科技含量、设计还是价格？支持国货是否意味着无条件购买？理性消费与产业支持之间，需要基于信息的独立判断。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>道德与法治（统编版）八年级上册第二单元·遵守社会规则（市场规则与诚信）；地理（人教版）八年级上册第四章·中国的经济发展（工业与高新技术产业）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：体育课上的篮球鞋，有人穿国际大牌，有人穿国产品牌。最近，国产体育品牌的日子并不轻松：库存积压、增速放缓。但走进商场，你会发现它们正在改变——更酷的设计、更专业的跑鞋。或许，下一次选鞋时，我们可以多看一眼标签背后的故事：这双鞋，是否真的适合我？</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">💰</div>
+      <h2>经济</h2>
+    </div>
+
+    <div class="overview">本周经济栏目聚焦高质量发展与对外开放。投资消费协力拓宽服务业增长空间，财政金融促内需“组合拳”政策效能加速释放。外贸稳中向好惠及全球，出口首破8万亿，“新”字挑大梁，中国持续扩大进口与世界共享发展机遇。外资企业坚定投资深圳、深耕中国，央行再推稳市新工具。新疆图木舒克产业富民“润”戈壁，山西加快能源企业复工复产确保完成13亿吨煤炭产量。银发旅游如何适老又悦老，优化口岸营商环境没有最好只有更好，展现经济活力与民生关怀。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>外贸稳中向好惠及全球——中国经济三季报亮点解析</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/zxbd/202610/t20261027_20063831.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>外贸是拉动经济增长的“三驾马车”之一。2026年前三季度，中国外贸呈现稳中向好态势，出口结构持续优化，机电产品、高新技术产品占比提升，与“一带一路”共建国家贸易增长较快。这得益于产业链供应链的韧性、稳外贸政策效应以及企业开拓多元化市场。外贸不仅关乎经济增长，也影响就业和全球商品供应。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>外贸数据向好是否意味着每个外贸企业都过得好？宏观数据与微观感受之间常有温差。学生可以思考：为什么国家强调“稳外贸”？它如何影响普通人的生活？比如进口商品价格、国内就业机会。同时，外贸依存度高的产业也面临外部风险，多元化市场布局是应对之道。这启发我们看问题要兼顾整体与局部。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>地理（人教版）八年级上册第四章·中国的经济发展（交通运输与国际贸易）；道德与法治（统编版）九年级下册第一单元·我们共同的世界（经济全球化）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：你手中的智能手机，可能芯片来自美国，屏幕来自韩国，组装在中国，然后销往欧洲。这就是外贸的日常。今年前三季度，中国外贸“稳中向好”，但数字背后，是无数工厂的忙碌与港口集装箱的流转。外贸不是新闻里的陌生词，它连着我们的就业和货架上的商品。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>正式落地！从股市到债市，央行再推稳市新工具</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/roll/202610/t20261027_20063836.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>央行推出的稳市新工具，通常指通过公开市场操作、再贷款、流动性支持等方式维护金融市场稳定。例如，设立专项工具支持股市回购增持、优化债券市场流动性。这些措施旨在防范系统性金融风险，提振市场信心，促进直接融资。金融市场的稳定关系到企业融资成本和居民财富，是现代经济管理的重要手段。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>央行出手稳市，是否意味着股市只涨不跌？金融工具的作用是平滑波动，而非消除风险。学生可以思考：为什么需要政府干预金融市场？市场失灵时，监管如何平衡效率与安全？同时，投资者也应明白“投资有风险”，不能依赖政策兜底。理解金融政策，有助于培养理性的财富观和风险意识。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>道德与法治（统编版）八年级下册第三单元·人民当家作主（国家机构与宏观调控）；数学（人教版）九年级上册·概率初步（风险与不确定性）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：爸爸最近总盯着手机看股市行情，嘴里念叨“央行出新工具了”。我好奇地问：“什么是稳市工具？”爸爸解释：“就像给市场系上安全带。”原来，金融市场也有“交通规则”，央行就是那个维护秩序的人。但安全带不能保证不出事故，投资还得靠自己判断。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🌟</div>
+      <h2>人物</h2>
+    </div>
+
+    <div class="overview">本周人物栏目讲述多样人生故事。第五届青少年心理安全论坛在重庆举办，让青年站上思政课“C位”，以赛促学构建青少年安全成长体系。奔走在看望英雄的路上，以英雄为名“文秀”“娇龙”月季上市，全国优秀青年杂技人才展演举办，流量向善短视频创业青年驰援巴青震区，青年志愿者闻令而动。这一声声一句句都是感天动地的英雄凯歌，“X教授”扮演者去世引发影迷怀念，金正恩访丹东向志愿军英雄致敬。人物故事传递正能量，展现青年担当。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>以英雄为名！“文秀”“娇龙”月季上市</h3>
+      <div class="meta">
+        <span class="source-tag">中国青年网</span>
+        <a href="http://news.youth.cn/gn/202610/t20261030_16940464.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>“文秀”月季和“娇龙”月季是以两位英雄人物命名的花卉品种。黄文秀是“七一勋章”获得者、全国脱贫攻坚楷模，生前在广西百色驻村扶贫，因公殉职；贺娇龙是新疆昭苏县原副县长，因直播带货助农走红，后因意外去世。以英雄命名月季，是将纪念融入日常生活，让人们在赏花时铭记奉献精神。这种命名方式体现了社会对平凡英雄的敬意。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>用英雄名字命名花卉，是纪念还是消费？支持者认为这能让英雄精神更亲近、更持久；也有人担心商业化会稀释严肃性。学生可以思考：什么样的纪念方式更有意义？是雕像、命名，还是践行其精神？真正的铭记，或许不在于名字被多少人知道，而在于有多少人愿意像他们一样行动。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>道德与法治（统编版）八年级上册第三单元·勇担社会责任（奉献社会）；语文（统编版）七年级下册第二单元·家国情怀（英雄人物）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：春天，公园里新添了一种月季，标牌上写着“文秀”。有人驻足问：“为什么叫这个名字？”志愿者讲起一位姐姐的故事：她放弃大城市工作，回到山村扶贫，把青春献给了大山。花瓣在风中轻摇，仿佛在说：记住我，不如成为我。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>让青年站上思政课“C位”</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202610/t20261029_2111536030.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>思政课是落实立德树人根本任务的关键课程。传统思政课常以教师讲授为主，而“让青年站上C位”强调以学生为中心，通过议题式教学、角色扮演、社会实践等方式，让学生主动参与、独立思考。这种教学改革旨在增强思政课的亲和力和针对性，使价值观教育从“被动接受”转向“主动建构”，符合青少年认知发展规律。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>青年站上思政课“C位”，是否意味着教师退居其次？其实，教师的作用从“灌输者”变为“引导者”，对专业能力要求更高。学生可以思考：自己理想中的思政课是什么样？是辩论社会热点，还是模拟政协提案？当课堂允许不同观点碰撞，我们能否理性表达、尊重他人？这本身就是民主与法治的实践。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>道德与法治（统编版）九年级上册第一单元·富强与创新（创新精神）；语文（统编版）八年级上册第一单元·新闻阅读（表达与交流）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：这学期的思政课，老师没有打开课本，而是抛出一个问题：“如果小区要加装电梯，一楼住户反对，怎么办？”教室瞬间炸开了锅。我们分成小组，扮演不同角色，查资料、写方案、辩论。下课铃响时，大家还意犹未尽。原来，思政课可以这样上——我们不是听众，而是主角。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🍟</div>
+      <h2>时事薯条</h2>
+    </div>
+
+    
+
+    
+    
+    <div class="fries-grid">
+      
+      <div class="fries-card">
+        <div class="fries-title">二十届五中全会部署从严治党</div>
+        <div class="fries-comment">💬 全面从严治党永远在路上，青少年也要从小树立规则意识。</div>
+        <span class="fries-knowledge">📚 党的建设包括政治、思想、组织、作风、纪律建设，人教版八年级下册第一单元（道德与法治）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">长征胜利90周年红色研学热</div>
+        <div class="fries-comment">💬 重走长征路，不只是脚步的丈量，更是精神的传承。</div>
+        <span class="fries-knowledge">📚 长征1934—1936年，途经11省，人教版八年级上册第五单元（历史）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">中国造船业持续领跑全球</div>
+        <div class="fries-comment">💬 从跟跑到领跑，中国制造靠的是创新和坚持。</div>
+        <span class="fries-knowledge">📚 我国沿海造船基地：大连、上海、广州，人教版八年级上册第四章（地理）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">2027年女排世界杯分组揭晓</div>
+        <div class="fries-comment">💬 女排精神代代传，期待中国女排再创佳绩。</div>
+        <span class="fries-knowledge">📚 排球比赛每队6人，发球轮转规则，人教版七年级全一册（体育与健康）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">青少年心理安全论坛举办</div>
+        <div class="fries-comment">💬 关注心理安全，让每个少年都能阳光成长。</div>
+        <span class="fries-knowledge">📚 青春期心理特点：独立性与依赖性并存，人教版七年级下册第一单元（道德与法治）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">2亿年前蝈蝈嗓门有多高</div>
+        <div class="fries-comment">💬 化石会说话，科学让远古声音重现。</div>
+        <span class="fries-knowledge">📚 化石是研究生物进化的重要证据，人教版八年级下册第七单元（生物）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">外贸出口首破8万亿</div>
+        <div class="fries-comment">💬 中国制造走向世界，开放带来共赢。</div>
+        <span class="fries-knowledge">📚 我国对外贸易主要港口：上海、深圳、宁波，人教版八年级上册第四章（地理）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">合肥反诈宣传进校园</div>
+        <div class="fries-comment">💬 提高警惕，不轻信不转账，做智慧小网民。</div>
+        <span class="fries-knowledge">📚 网络交往要学会自我保护，人教版八年级上册第二单元（道德与法治）</span>
+      </div>
+      
+    </div>
+    
+
+    
+    
+  </section>
+  
+
+  <!-- ============ 副刊 ============ -->
+  
+  <section class="supplement">
+    <h2>🎭 副刊</h2>
+    <div class="topic">本期话题：长征精神如何照亮今天</div>
+    
+    <div class="perspective">
+      <div class="role">历史学者</div>
+      <p>长征是人类历史上的伟大奇迹。1934年至1936年，红军穿越11个省份，翻越18座大山，跨过24条大河，行程约二万五千里。长征精神的核心是把全国人民和中华民族的根本利益看得高于一切，坚定革命的理想和信念，坚信正义事业必然胜利。今天，我们不再需要翻雪山过草地，但长征精神依然有现实意义。它告诉我们，面对困难要有必胜的信念，面对挑战要团结协作，面对诱惑要坚守纪律。学习长征历史，不是简单背诵时间地点，而是理解那种在绝境中寻找希望、在逆境中坚持奋斗的精神力量。</p>
+    </div>
+    
+    <div class="perspective">
+      <div class="role">教育专家</div>
+      <p>长征精神是青少年成长的精神钙片。现在的孩子生活条件优越，很少经历挫折，容易缺乏韧性和毅力。长征故事提供了最好的挫折教育素材：红军战士在缺衣少食的情况下坚持行军，在枪林弹雨中保持乐观，这种精神对今天的孩子有强烈的感染力。教育者要善于把长征精神转化为学生可感知、可实践的内容。比如组织红色研学，让学生走一段“微长征”；开展主题班会，讨论“我的长征路”；在学科教学中融入长征元素，让历史活起来。关键不是灌输，而是引导学生在体验中感悟，把长征精神内化为自己的精神品质。</p>
+    </div>
+    
+    <div class="perspective">
+      <div class="role">心理学家</div>
+      <p>从心理学角度看，长征精神蕴含着强大的心理韧性。心理学研究表明，心理韧性包括目标感、乐观、自我效能、情绪调节等要素。长征中红军战士有明确的目标（北上抗日），有乐观的精神（革命理想高于天），有相互支持的团队，这些都是心理韧性的保护因子。青少年学习长征精神，可以从中汲取心理力量。当遇到考试失利、人际关系困扰时，想想红军战士面对的是生死考验，自己的困难就显得没那么可怕了。同时，长征精神也提醒我们，成长不是一帆风顺的，挫折是成长的必经之路，关键是如何面对。培养心理韧性，就是给自己穿上心理铠甲。</p>
+    </div>
+    
+  </section>
+  
+
+  <!-- ============ 观点碰撞 ============ -->
+  
+  <section class="debate">
+    <h2>⚔️ 观点碰撞</h2>
+    <div class="debate-topic">本期话题：短视频对青少年利大于弊还是弊大于利</div>
+    <div class="debate-sides">
+      
+      <div class="side side-a">
+        <span class="side-label">观点 A</span>
+        短视频为青少年提供了丰富的学习资源和表达平台。许多知识类短视频用生动有趣的方式讲解科学、历史、文化知识，降低了学习门槛，激发了学习兴趣。短视频也为青少年提供了展示才华的舞台，不少青少年通过短视频记录生活、分享创意，获得认同感和成就感。此外，短视频传播速度快、覆盖面广，有助于青少年了解社会动态、拓宽视野。只要合理使用，短视频可以成为青少年成长的有益工具。
+      </div>
+      
+      
+      <div class="side side-b">
+        <span class="side-label">观点 B</span>
+        短视频对青少年的负面影响不容忽视。短视频内容良莠不齐，部分低俗、虚假信息容易误导青少年。算法推荐机制容易让人沉迷，青少年自控能力较弱，容易浪费时间、影响学习和睡眠。长期刷短视频还会削弱深度阅读和思考能力，导致注意力碎片化。此外，短视频中的炫富、攀比等内容可能扭曲青少年价值观。因此，需要严格限制青少年使用短视频，加强内容监管，防止沉迷。
+      </div>
+      
+    </div>
+    
+    <div class="stance">
+      <span class="stance-label">🤔 AI 的立场</span>
+      双方观点各有前提。A方成立的前提是：青少年具备一定的媒介素养和自控能力，平台内容审核严格，家长和学校有效引导。B方成立的前提是：青少年自控能力不足，平台监管不完善，缺乏有效引导。实际上，短视频本身是中性工具，利弊取决于如何使用。对青少年而言，完全禁止不现实，放任自流更不可取。关键在于培养媒介素养，学会辨别信息、管理时间；平台应完善青少年模式，提供优质内容；家长和学校要共同引导，帮助青少年养成健康的使用习惯。
+    </div>
+    
+  </section>
+  
+
+  <!-- ============ 本周思考题 ============ -->
+  
+  <section class="discussion">
+    <h2>💡 本周思考题</h2>
+    <div class="question">长征精神在今天还有哪些现实意义？作为中学生，你如何在学习生活中践行长征精神？</div>
+    
+    <div class="hints">
+      <div class="hints-title">🧭 思路提示</div>
+      <ul><li>想一想长征中红军战士面对困难时的态度和做法，对比自己遇到困难时的表现。</li><li>结合学习中的具体事例，比如遇到难题、考试失利、坚持体育锻炼等，谈谈如何用长征精神激励自己。</li><li>可以从个人成长、班级合作、社会责任等角度思考长征精神的当代价值。</li></ul>
+    </div>
+    
+    
+    <div class="writing-tips">
+      <div class="hints-title">✍️ 写作建议</div>
+      <p>写作时避免空谈口号，要结合具体事例。可以先简述长征中的一个感人细节，再联系自己的实际经历，写出真实感受。比如写自己长跑时想放弃，想到红军战士的坚持，最终咬牙完成。也可以写班级合作中遇到分歧，用长征精神中的团结协作化解矛盾。结尾不要简单表决心，而要写出对长征精神的新认识，体现思考的深度。注意语言平实，有真情实感。</p>
+    </div>
+    
+  </section>
+  
+
+  <footer>
+    <div><span class="brand">大少年新闻周报</span> · 每周六更新</div>
+    <div>由 DeepSeek 生成分析 · 数据来自新华网、人民网等公开新闻源</div>
+    <div>本报告仅供学习参考</div>
+  </footer>
+</div>
+</body>
+</html>
