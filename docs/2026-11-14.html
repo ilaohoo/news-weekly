@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大少年新闻周报 · 2026-11-14</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5; color: #1a1a1a; line-height: 1.75;
+    padding: 16px; -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 820px; margin: 0 auto; }
+
+  /* ===== 封面 ===== */
+  .cover {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb347 100%);
+    color: #fff; padding: 44px 34px; border-radius: 20px;
+    margin-bottom: 26px; box-shadow: 0 12px 32px rgba(255,107,53,0.22);
+    position: relative; overflow: hidden;
+  }
+  .cover::before {
+    content: ""; position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .cover::after {
+    content: ""; position: absolute; bottom: -80px; right: 60px;
+    width: 140px; height: 140px; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .cover-badge {
+    display: inline-block; background: rgba(255,255,255,0.22);
+    padding: 5px 14px; border-radius: 20px; font-size: 13px;
+    margin-bottom: 16px; backdrop-filter: blur(4px);
+  }
+  .cover h1 { font-size: 32px; margin-bottom: 18px; letter-spacing: 1px; }
+  .cover .headline {
+    font-size: 19px; line-height: 1.6; font-weight: 500;
+    padding: 16px 20px; background: rgba(255,255,255,0.16);
+    border-radius: 12px; margin-bottom: 20px; backdrop-filter: blur(4px);
+  }
+  .cover .keywords { margin-bottom: 22px; }
+  .cover .keyword {
+    display: inline-block; background: rgba(255,255,255,0.28);
+    padding: 4px 12px; border-radius: 14px; font-size: 13px;
+    margin: 0 8px 8px 0;
+  }
+  .cover .points { list-style: none; }
+  .cover .points li {
+    padding: 8px 0 8px 24px; position: relative; font-size: 15px;
+    border-bottom: 1px dashed rgba(255,255,255,0.2);
+  }
+  .cover .points li:last-child { border-bottom: none; }
+  .cover .points li::before {
+    content: "▸"; position: absolute; left: 0; opacity: 0.85;
+  }
+
+  /* ===== 栏目 ===== */
+  .category {
+    background: #fff; border-radius: 20px; padding: 34px 32px;
+    margin-bottom: 24px; box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+  }
+  .category-title {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px; padding-bottom: 16px;
+    border-bottom: 2px solid #f5f5f5;
+  }
+  .category-title .icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; background: linear-gradient(135deg, #ff6b35, #f7931e);
+    box-shadow: 0 4px 12px rgba(255,107,53,0.25);
+  }
+  .category-title h2 { font-size: 22px; color: #ff6b35; font-weight: 700; }
+
+  .overview {
+    background: linear-gradient(135deg, #fff8f3 0%, #fff3ec 100%);
+    padding: 20px 22px; border-radius: 14px; margin-bottom: 26px;
+    font-size: 15px; color: #444; line-height: 1.8;
+    border-left: 4px solid #ffb347;
+  }
+
+  /* ===== 重点新闻 ===== */
+  .highlight {
+    padding-top: 24px; margin-top: 24px; border-top: 1px dashed #ebeef2;
+  }
+  .highlight:first-of-type { padding-top: 0; margin-top: 0; border-top: none; }
+  .highlight h3 {
+    font-size: 18px; margin-bottom: 10px; line-height: 1.5; color: #222;
+  }
+  .highlight .meta {
+    font-size: 13px; color: #999; margin-bottom: 18px;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .highlight .meta .source-tag {
+    background: #f5f5f5; color: #666; padding: 2px 10px;
+    border-radius: 10px; font-size: 12px;
+  }
+  .highlight .meta a { color: #ff6b35; text-decoration: none; font-weight: 500; }
+  .highlight .meta a:hover { text-decoration: underline; }
+
+  .dimension {
+    margin-bottom: 12px; padding: 14px 18px;
+    background: #fafbfc; border-radius: 12px;
+    border-left: 4px solid #ddd; transition: background 0.2s;
+  }
+  .dimension:hover { background: #f5f7fa; }
+  .dimension .label {
+    font-weight: 600; font-size: 13px; margin-bottom: 6px;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .dimension p { font-size: 14px; color: #333; line-height: 1.8; }
+  .dimension.knowledge { border-left-color: #4a90e2; }
+  .dimension.knowledge .label { color: #4a90e2; }
+  .dimension.history { border-left-color: #8e6e53; }
+  .dimension.history .label { color: #8e6e53; }
+  .dimension.global { border-left-color: #16a085; }
+  .dimension.global .label { color: #16a085; }
+  .dimension.thinking { border-left-color: #9b59b6; }
+  .dimension.thinking .label { color: #9b59b6; }
+  .dimension.subject { border-left-color: #27ae60; }
+  .dimension.subject .label { color: #27ae60; }
+  .dimension.writing { border-left-color: #e67e22; }
+  .dimension.writing .label { color: #e67e22; }
+
+  /* ===== 时事薯条 ===== */
+  .fries-grid {
+    display: grid; grid-template-columns: 1fr; gap: 12px;
+  }
+  .fries-card {
+    background: #fffdf5; border-radius: 12px; padding: 14px 18px;
+    border-left: 4px solid #f5b041;
+  }
+  .fries-card .fries-title {
+    font-size: 15px; font-weight: 600; color: #333; margin-bottom: 6px;
+  }
+  .fries-card .fries-comment {
+    font-size: 13px; color: #666; margin-bottom: 6px;
+  }
+  .fries-card .fries-knowledge {
+    font-size: 12px; color: #d68910;
+    background: #fff8e6; padding: 4px 10px; border-radius: 8px;
+    display: inline-block;
+  }
+
+  /* ===== 副刊 ===== */
+  .supplement {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #fff; border-radius: 20px; padding: 36px 32px;
+    margin-bottom: 24px; box-shadow: 0 8px 24px rgba(44,62,80,0.2);
+  }
+  .supplement h2 {
+    font-size: 24px; margin-bottom: 10px; display: flex;
+    align-items: center; gap: 10px; color: #fff;
+  }
+  .supplement .topic {
+    font-size: 15px; opacity: 0.85; margin-bottom: 26px;
+    padding-left: 34px;
+  }
+  .perspective {
+    background: rgba(255,255,255,0.08); border-radius: 14px;
+    padding: 20px 22px; margin-bottom: 14px;
+    border-left: 3px solid #ffb347;
+    backdrop-filter: blur(4px);
+  }
+  .perspective:last-child { margin-bottom: 0; }
+  .perspective .role {
+    font-size: 13px; font-weight: 600; color: #ffb347;
+    margin-bottom: 8px; letter-spacing: 0.5px;
+  }
+  .perspective p { font-size: 14px; line-height: 1.85; color: #eaeaea; }
+
+  /* ===== 观点碰撞 ===== */
+  .debate {
+    background: #fff; border-radius: 20px; padding: 34px 32px;
+    margin-bottom: 24px; box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+  }
+  .debate h2 {
+    font-size: 22px; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 10px; color: #c0392b;
+  }
+  .debate .debate-topic {
+    font-size: 16px; color: #555; margin-bottom: 24px;
+    padding-left: 34px;
+  }
+  .debate-sides {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 640px) {
+    .debate-sides { grid-template-columns: 1fr; }
+  }
+  .side {
+    padding: 18px 20px; border-radius: 14px; font-size: 14px; line-height: 1.8;
+  }
+  .side-a {
+    background: #eaf4fd; border-left: 4px solid #3498db; color: #2c3e50;
+  }
+  .side-b {
+    background: #fdeaea; border-left: 4px solid #e74c3c; color: #2c3e50;
+  }
+  .side .side-label {
+    font-weight: 700; font-size: 13px; margin-bottom: 8px; display: block;
+  }
+  .side-a .side-label { color: #3498db; }
+  .side-b .side-label { color: #e74c3c; }
+  .stance {
+    background: #f8f9fa; padding: 18px 20px; border-radius: 14px;
+    border-left: 4px solid #95a5a6; font-size: 14px; line-height: 1.8;
+    color: #444;
+  }
+  .stance .stance-label {
+    font-weight: 700; font-size: 13px; color: #7f8c8d;
+    margin-bottom: 8px; display: block;
+  }
+
+  /* ===== 思考题 ===== */
+  .discussion {
+    background: linear-gradient(135deg, #fffbea 0%, #fff5d6 100%);
+    border-radius: 20px; padding: 34px 32px; margin-bottom: 24px;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+    border: 1px solid #ffe4a8;
+  }
+  .discussion h2 {
+    font-size: 22px; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px; color: #d68910;
+  }
+  .discussion .question {
+    font-size: 17px; font-weight: 600; color: #333;
+    padding: 18px 20px; background: #fff; border-radius: 12px;
+    margin-bottom: 20px; line-height: 1.7;
+    border-left: 4px solid #f5b041;
+  }
+  .hints-title {
+    font-size: 14px; font-weight: 600; color: #d68910;
+    margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+  }
+  .hints ul { list-style: none; margin-bottom: 20px; }
+  .hints li {
+    padding: 8px 0 8px 22px; position: relative;
+    font-size: 14px; color: #555;
+  }
+  .hints li::before {
+    content: "○"; position: absolute; left: 0; color: #f5b041;
+    font-weight: bold;
+  }
+  .writing-tips {
+    background: #fff; border-radius: 12px; padding: 16px 20px;
+  }
+  .writing-tips p { font-size: 14px; color: #555; line-height: 1.8; }
+
+  /* ===== 页脚 ===== */
+  footer {
+    text-align: center; color: #999; font-size: 13px;
+    padding: 32px 0 12px; line-height: 1.8;
+  }
+  footer .brand { color: #ff6b35; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ============ 封面导读 ============ -->
+  
+  <header class="cover">
+    <div class="cover-badge">📅 2026-11-14 · 每周六更新</div>
+    <h1>📰 大少年新闻周报</h1>
+    <div class="headline">APEC深圳时刻：中国主场外交与亚太合作新篇</div>
+    
+    <div class="keywords">
+      <span class="keyword"># APEC深圳</span><span class="keyword"># 五中全会精神</span><span class="keyword"># 人工智能+</span><span class="keyword"># 孙中山诞辰160周年</span><span class="keyword"># 亚太合作</span>
+    </div>
+    
+    
+    <ul class="points">
+      <li>习近平将出席APEC领导人非正式会议</li><li>五中全会精神宣讲深入基层与青年</li><li>深圳科创游展现“未来之城”魅力</li><li>纪念孙中山诞辰160周年弘扬振兴中华</li><li>AI赋能教育、医疗与文创引热议</li>
+    </ul>
+    
+  </header>
+  
+
+  <!-- ============ 各栏目 ============ -->
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🔥</div>
+      <h2>头条</h2>
+    </div>
+
+    <div class="overview">本周头条聚焦习近平主席的元首外交与党的二十届五中全会精神学习贯彻。习主席将出席亚太经合组织第三十三次领导人非正式会议，并发表一系列重要论述，为亚太合作指明方向。同时，中央宣讲团在外交部等单位宣讲五中全会精神，系列述评强调制度治党、依规治党。五中全会精神在基层引发热烈反响，鼓舞广大知识分子和青年学生勇毅前行。此外，习近平主席关怀高原群众、让出氧气袋的细节温暖人心，中加命运共同体建设也迈出新步伐。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>习近平主席引领亚太大家庭扬帆前行</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/pic/yctp/202611/t20261114_20066115.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>亚太经合组织（APEC）是亚太地区层级最高、领域最广、最具影响力的经济合作机制，成立于1989年。中国于1991年加入，并在2001年和2014年分别在上海和北京举办过APEC领导人非正式会议。2026年APEC会议在深圳举办，这是中国第三次主办，也是深圳首次举办如此大规模的国际会议。APEC的宗旨是促进亚太地区的贸易投资自由化和经济技术合作。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>APEC的成立源于冷战结束后亚太地区经济合作的加强。中国加入APEC后，积极参与区域经济一体化，推动亚太自贸区建设。从上海到北京再到深圳，APEC会议举办地的变迁也折射出中国改革开放的深化和城市发展的升级。深圳从一个小渔村发展为国际化大都市，正是中国参与亚太合作的生动缩影。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>APEC拥有21个成员，涵盖环太平洋主要经济体。与中国类似，美国、日本等成员也通过APEC推动区域合作。但近年来，逆全球化思潮抬头，APEC面临挑战。中国通过主办会议，强调开放合作，与一些国家搞“小院高墙”形成对比，展现负责任大国形象。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>APEC会议为何选在深圳？这既是对深圳改革开放成就的肯定，也寓意中国将继续以开放姿态拥抱亚太。我们可以思考：在国际形势复杂多变的今天，中国如何通过主场外交推动区域合作？作为青少年，如何培养全球视野？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《道德与法治》九年级下册第一单元·我们共同的世界；人教版《地理》八年级下册第七章·南方地区（深圳区位）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可作为“开放合作”“中国担当”主题作文素材。开头示例：当亚太经合组织的旗帜在深圳湾畔升起，世界再次将目光投向中国。从上海到北京，再到深圳，APEC会议举办地的变迁，恰似中国开放脚步的铿锵回响。作为新时代少年，我们应从这场盛会中读懂中国与世界共赢的密码。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>五中全会精神在基层｜特写：一叶红船映初心，百年薪火启新程</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/pic/yctp/202611/t20261110_20065514.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>党的二十届五中全会于2026年10月召开，主要研究“十五五”规划问题。红船指1921年中共一大在浙江嘉兴南湖召开的会议，标志着中国共产党诞生。红船精神的内涵是开天辟地、敢为人先的首创精神，坚定理想、百折不挠的奋斗精神，立党为公、忠诚为民的奉献精神。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>1921年夏，中共一大在上海开幕，因遭法租界巡捕干扰，最后一天转移到嘉兴南湖一条游船上继续举行。这条船因此被称为“红船”。2005年，习近平同志首次提出“红船精神”。此后，红船成为中国共产党革命精神的重要象征。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>许多国家都有类似的政治象征，如美国自由钟、法国马赛曲。但红船的特殊性在于它承载着中国共产党从诞生到壮大的历史记忆，是中国特色社会主义政治文化的重要符号。与西方政党文化不同，中国共产党的红色文化更强调初心使命和人民性。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>红船精神为何在今天依然重要？它提醒我们，一个政党的生命力在于不忘初心。作为青年学生，我们如何理解“初心”？在学习和生活中，如何践行奋斗精神和奉献精神？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《道德与法治》八年级上册第四单元·维护国家利益；人教版《历史》八年级上册第五单元·从国共合作到国共对立（中共诞生）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可作为“传承红色基因”“初心与使命”主题作文素材。开头示例：南湖碧波，红船静泊。一百多年前，一群平均年龄28岁的青年在这里点燃革命火种；今天，红船精神穿越时空，依然照亮我们前行的路。作为新时代少年，我们当以红船为镜，以初心为舵，在时代洪流中奋楫争先。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🇨🇳</div>
+      <h2>中国</h2>
+    </div>
+
+    <div class="overview">本周中国栏目呈现多元社会图景。APEC会议在深圳举行，系列报道带读者一站式打卡“未来之城”，探讨深圳吸引力与亚太奇迹新篇章。纪念孙中山先生诞辰160周年大会在京举行，缅怀先驱、感悟振兴中华之路。第十一届博博会在海口举办，青奥会上未来之星闪耀。同时，民生话题如群众温暖过冬、糖尿病早防早治受到关注，猫武士主题活动则为青少年带来阅读与体验的乐趣。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>开“新”APEC丨一站式打卡“未来之城” 深圳科创游攻略来了</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/roll/202611/t20261113_20065996.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>深圳被称为“创新之城”，拥有华为、腾讯、大疆等科技巨头，以及众多科研机构和孵化器。2026年APEC会议在深圳举办，深圳推出科创游线路，展示其科技创新成果。科创游包括参观高科技企业、实验室、创新园区等，让游客感受“未来之城”的魅力。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>深圳从1980年设立经济特区以来，从“三来一补”的加工制造业起步，逐步转向自主创新。2000年后，深圳大力发展战略性新兴产业，如今已成为全球重要的科技创新中心。深圳的转型是中国从“制造”到“创造”的缩影。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>全球许多城市都推出科创旅游，如美国硅谷、以色列特拉维夫、日本东京。深圳的独特之处在于其完整的产业链和快速产业化能力。与世界其他创新城市相比，深圳更注重应用型创新和硬件制造，被誉为“硬件硅谷”。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>科创游为何受关注？它不仅是旅游，更是城市形象的展示。深圳的创新能力从何而来？我们可以思考：创新需要哪些条件？是人才、政策，还是文化？作为学生，如何培养创新意识？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《地理》八年级下册第七章·南方地区（深圳的区位与经济发展）；人教版《道德与法治》九年级上册第一单元·富强与创新。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可作为“创新驱动发展”“城市转型”主题作文素材。开头示例：当APEC嘉宾漫步深圳湾，他们看到的不仅是一座城市的繁华，更是一个国家创新的脉动。从“三来一补”到“硬件硅谷”，深圳的蜕变告诉我们：创新，是引领发展的第一动力。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>相约深圳，续写“亚太奇迹”新篇章</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/zxbd/202611/t20261114_20066128.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>APEC会议是亚太地区最重要的经济合作论坛，中国作为东道主，将推动亚太自贸区建设、数字经济合作等议题。深圳作为举办地，展示了中国改革开放的成就。会议期间，各成员领导人将就区域经济一体化、可持续发展等展开讨论。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>中国曾于2001年和2014年分别在上海和北京举办APEC会议。2001年会议推动了中国加入WTO的进程；2014年会议启动了亚太自贸区进程。此次深圳会议将继续推动亚太合作，体现中国在区域经济治理中的积极作用。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>亚太地区占全球GDP的60%以上，APEC在推动贸易便利化方面发挥了重要作用。但与欧盟等区域组织相比，APEC缺乏约束性协议。中国主张维护多边贸易体制，与一些国家的保护主义形成对比。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>“亚太奇迹”指的是亚太地区长期的经济增长。这一奇迹能否延续？面临哪些挑战？中国在其中有怎样的角色？我们可以从开放与保护、合作与竞争的角度思考。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《道德与法治》九年级下册第一单元·我们共同的世界；人教版《地理》八年级下册第七章·南方地区。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可作为“合作共赢”“中国与世界”主题作文素材。开头示例：从上海到北京，再到深圳，APEC会议举办地的变迁，勾勒出中国开放合作的轨迹。当世界再次聚焦中国，我们看到的不仅是一场盛会，更是一个国家与亚太大家庭携手前行的决心。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🌍</div>
+      <h2>世界</h2>
+    </div>
+
+    <div class="overview">本周世界栏目涵盖国际政治、教育合作与全球经济。文明互鉴国际论坛在澳门收官，粤港澳大湾区建设加速推进，世界媒体峰会汇聚力量完善全球传播治理。教育领域，产教融合国际论坛在武汉开幕，国际人才交流大会在上海举行，法国高校跨界培养跨国人才，鲁班工坊为全球治理贡献中国范例。中东局势方面，以军总参谋长主张暂缓对伊朗动武，欧洲争取俄乌和谈席位，美通胀持续金价下跌，日本安保战略框架曝光，俄美乌三方会谈涉及欧洲安全架构。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>从澳门出发，为文明作答——写在“文明互鉴国际论坛2026”收官之际</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/zxbd/202611/t20261111_20065718.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>文明互鉴国际论坛2026在澳门举办，旨在促进不同文明之间的对话与交流。澳门作为中西文化交融之地，具有独特的历史文化优势。论坛期间，各国学者探讨了文明多样性、文化遗产保护等议题。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>澳门自16世纪中叶开埠以来，一直是中西文化交流的桥梁。400多年来，中华文化与葡萄牙文化等在此碰撞融合，形成了独特的澳门文化。回归祖国后，澳门更成为“一国两制”成功实践的典范，也是中外文明交流的窗口。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>全球有多个文明对话平台，如联合国文明联盟、博鳌亚洲论坛文化分论坛等。中国倡导的文明互鉴理念强调平等、包容、互学互鉴，与“文明冲突论”形成鲜明对比，为全球治理提供了中国智慧。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>为什么选择澳门举办文明互鉴论坛？澳门的历史文化有何特殊价值？在全球化遭遇逆流的今天，文明互鉴为何更加重要？我们可以思考如何从身边做起，尊重和欣赏不同文化。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《历史》八年级下册第四单元·民族团结与祖国统一（澳门回归）；人教版《道德与法治》九年级下册第一单元·我们共同的世界。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可作为“文化交流”“文明互鉴”主题作文素材。开头示例：澳门，一座东西方文化交融的城市。在这里，妈祖庙与教堂相邻，粤语与葡语交织。文明互鉴国际论坛的举办，让世界再次看到：不同文明可以和谐共处，美美与共。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>鲁班工坊：为全球治理贡献中国范例</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202611/t20261110_2111540177.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>鲁班工坊是中国职业教育国际合作的品牌项目，以中国古代工匠鲁班命名，旨在向世界分享中国职业教育经验。自2016年首个鲁班工坊在泰国设立以来，已在多个国家落地，培养了大量技术技能人才。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>鲁班是中国古代著名工匠，被尊为土木建筑鼻祖。以鲁班命名工坊，寓意传承工匠精神。鲁班工坊的设立是中国职业教育“走出去”的创新实践，也是“一带一路”倡议下人文交流的重要组成部分。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>德国有“双元制”职业教育，日本有“匠人精神”，中国鲁班工坊则结合了学历教育与技能培训，为发展中国家提供定制化方案。与西方职业教育输出相比，鲁班工坊更注重本土化需求和可持续发展。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>鲁班工坊为何能成为全球治理的范例？它体现了怎样的中国智慧？我们可以思考：职业教育如何促进减贫和经济发展？中国工匠精神与西方工匠精神有何异同？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《道德与法治》九年级下册第二单元·世界舞台上的中国；人教版《历史》七年级上册第二单元·夏商周时期（鲁班所处时代背景）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可作为“工匠精神”“中国贡献”主题作文素材。开头示例：鲁班，一个古老的名字，如今在异国他乡焕发新生。鲁班工坊，不仅传授技术，更传递友谊。它告诉我们：中国的发展经验，可以成为世界的共同财富。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🔬</div>
+      <h2>科学</h2>
+    </div>
+
+    <div class="overview">本周科学栏目凸显人工智能的多元应用与社会影响。快手公益发布“启智星计划”，探索AI时代县域教育共建；“知心姐姐”推出智能成长陪伴方案，构建儿童成长闭环；天津信创实验室助力打造“信创第一城”，闲置楼宇变身创新高地；AI短剧出海千亿赛道，十五五将深化“人工智能+”行动。同时，AI儿童问诊的风险提示、全国消防日科学逃生知识、APEC海洋生态保护会议以及AI赋能美育的校园实践，共同展现科技与生活、安全、生态的紧密交织。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>“十五五”时期我国将深化拓展“人工智能+”行动</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/zxbd/202611/t20261112_20065843.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>“人工智能+”行动是指将人工智能技术与各行各业深度融合，推动产业升级和社会治理智能化。我国在“十四五”规划中首次提出“人工智能+”，并在“十五五”期间进一步深化。这包括智能制造、智慧医疗、智慧教育等领域。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>人工智能概念于1956年达特茅斯会议上提出，经历了多次起伏。中国在2017年发布《新一代人工智能发展规划》，将AI上升为国家战略。近年来，中国在AI应用领域取得显著进展，如人脸识别、语音识别等。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>美国在AI基础研究和芯片领域领先，中国在应用场景和数据资源方面有优势，欧盟则注重AI伦理和法规。全球AI竞争激烈，中国通过“人工智能+”行动，旨在推动AI与实体经济融合，抢占发展制高点。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>AI会取代人类工作吗？如何平衡AI发展与隐私保护？我们可以思考：作为学生，应如何适应AI时代？需要培养哪些能力？AI能否帮助解决教育不公平问题？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《道德与法治》九年级上册第一单元·富强与创新；人教版《物理》九年级全一册第二十章·电与磁（信息技术基础）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可作为“科技创新”“人工智能”主题作文素材。开头示例：当AI医生辅助诊断，当无人驾驶汽车驶上街头，人工智能正悄然改变我们的生活。“十五五”规划将“人工智能+”行动推向深入，一个智能时代正加速到来。作为数字原住民，我们准备好了吗？</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>AI儿童问诊便利背后藏风险：缺乏查体与个体化判断，家长勿盲目依赖</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/roll/202611/t20261110_20065667.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>AI问诊是指利用人工智能技术提供医疗咨询服务，如症状自查、用药建议等。近年来，一些AI问诊工具进入儿童健康领域，家长可通过手机应用获取初步建议。但AI缺乏面对面的查体和个体化判断，存在误诊风险。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>AI在医疗领域的应用始于20世纪70年代的专家系统，如MYCIN用于诊断感染性疾病。近年来，随着深度学习发展，AI影像诊断、智能问诊等逐渐普及。但儿童生理特点特殊，AI模型若缺乏儿童数据训练，准确性会打折扣。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>美国FDA已批准多款AI医疗产品，但主要针对成人。欧盟对AI医疗设备有严格监管。中国在AI医疗应用方面发展迅速，但相关法规和标准仍在完善中。各国都强调AI辅助而非替代医生。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>AI问诊方便快捷，但能替代医生吗？家长应如何理性使用AI工具？我们可以思考：技术便利与安全如何平衡？在医疗领域，AI的边界在哪里？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《生物学》七年级下册第四单元·生物圈中的人（人体生理）；人教版《道德与法治》八年级上册第二单元·遵守社会规则（网络生活）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可作为“科技双刃剑”“理性使用AI”主题作文素材。开头示例：手指一点，AI就能给出诊断建议——这看似美好的场景，背后却暗藏风险。当技术触及生命健康，我们更需保持敬畏。AI是工具，不是神医。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🎨</div>
+      <h2>文化</h2>
+    </div>
+
+    <div class="overview">本周文化栏目展现中华文化的传承、创新与交流。大型文化节目《天涯共此诗》开播，以诗为桥连接中华文化；进博会上传统技艺邂逅开放盛会，新疆非遗登台，中央音乐学院“抱一·东西乐团”奏响中西融合新声。教育系统深耕文化沃土，让历史“再现”、信仰扎根，青岛“一平米博物馆”进校园，泰安海外学子感受传统文化，连云港学生巧手做豆腐。此外，清正廉洁文化根基持续夯实，博物馆学习价值被重新认识，文化碰撞走向智联中外。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>《天涯共此诗》11月13日开播——以诗为桥，与中华文化相遇</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/zxbd/202611/t20261114_20066131.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>《天涯共此诗》是一档以古诗词为主题的文化节目，通过诵读、解读、演绎等方式，展现中华诗词的魅力。节目旨在推动传统文化传承，让经典诗词走进大众生活。诗词是中华文化瑰宝，承载着历史记忆和民族情感。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>中国是诗的国度，从《诗经》到唐诗宋词，诗词传统源远流长。近年来，《中国诗词大会》等节目掀起诗词热，传统文化复兴成为潮流。《天涯共此诗》延续这一趋势，以更国际化的视角传播诗词文化。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>许多国家都有诗歌文化节目，如英国的诗歌朗诵会、日本的俳句讲座。中国诗词节目通过电视和网络传播，影响广泛。与西方个人主义诗歌传统不同，中国诗词更注重家国情怀和意境表达。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>古诗词在今天还有用吗？为什么我们要读诗？诗词如何连接古今、沟通中外？我们可以思考：在快节奏的现代生活中，诗词能给我们带来什么？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《语文》八年级上册第三单元·唐诗五首；人教版《历史》七年级下册第一单元·隋唐时期（唐诗繁荣）。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可作为“传统文化”“诗意生活”主题作文素材。开头示例：当“床前明月光”在异国他乡被吟诵，当“海内存知己”成为国际友人的座右铭，中华诗词正跨越时空，连接心灵。《天涯共此诗》让我们看到：诗，是中国人共同的精神故乡。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>青岛：“一平米博物馆”进校园</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzcg/xwy/tpxw/202611/t20261112_2111541420.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>“一平米博物馆”是一种微型博物馆教育项目，将博物馆展品或复制品以最小空间（一平方米）布置在校园内，让学生近距离观察和体验。该项目旨在打破博物馆的物理边界，让文物“活”起来，融入日常教育。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>博物馆教育起源于19世纪欧洲，近年来中国大力推动博物馆进校园。2020年，教育部和国家文物局联合发文，鼓励博物馆与学校合作。“一平米博物馆”是这一背景下的创新实践，降低了博物馆教育的门槛。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>欧美国家博物馆教育发达，如美国史密森尼学会的学校项目、英国大英博物馆的移动课堂。中国博物馆教育起步较晚但发展迅速，通过“一平米博物馆”等轻量化形式，更易在资源有限地区推广。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>一平米能装下什么？一个博物馆。这种微型博物馆如何改变学习方式？我们可以思考：教育创新是否一定要高科技？小空间如何激发大兴趣？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版《历史》七年级上册第一单元·史前时期（文物与历史）；人教版《美术》八年级上册第五单元·中国民间美术。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>可作为“教育创新”“文化传承”主题作文素材。开头示例：一平方米，能做什么？在青岛的校园里，它是一座博物馆。当文物走出展柜，走进教室，历史不再是课本上的文字，而是触手可及的真实。教育，有时只需要一平方米的创意。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">📖</div>
+      <h2>教育</h2>
+    </div>
+
+    <div class="overview">本周教育栏目关注学生健康、教师成长与学校治理。全国健康学校建设试点交流活动举行，世界中文大会发布三项国际中文教育成果，教育部举办新任地市县教育局长培训班。贵州黔东南校园冬季运动会和苗年民俗活动充满活力，山西能源学院把地质课搬进小学校园，国家开放大学举办药学科普大赛。评论文章聚焦校长脱稿讲话、家长参与办学、学校空间育人等议题，倡导教育回归育人本质。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>校长脱稿讲话才能看得见台下学生</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202611/t20261113_2111541580.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>脱稿讲话考验的是校长对学校情况是否真正熟悉。如果校长平时深入课堂、了解学生，讲话时自然有话可说。反之，依赖秘书写稿、照本宣科，说明校长与师生之间有距离。这则新闻提醒我们，教育管理者的工作作风直接影响校园氛围。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>为什么“脱稿”会被专门拿出来讨论？是不是因为照稿念已经成了常态？我们可以想一想：如果校长讲话时眼睛盯着稿子，台下的学生是什么感受？推而广之，任何场合的发言，真诚和准备哪个更重要？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>道德与法治（人教版）八年级上册第三单元·责任与角色同在，涉及“我对谁负责 谁对我负责”中关于角色责任与担当的讨论。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：上周，一则关于“校长脱稿讲话”的新闻引发热议。新闻里说，有位校长在升旗仪式上全程脱稿，眼睛看着台下的学生，讲了三分钟。台下掌声不断。这让我想到，讲话看似小事，却藏着一所学校的管理温度。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>全国健康学校建设试点工作交流活动举行</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202611/t20261114_2111541946.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>健康学校建设不只是多开几节体育课，还包括心理健康、近视防控、营养膳食、传染病预防等。试点工作意味着先选一批学校探索经验，再向全国推广。这背后是国家对学生“身心健康”的整体关注，而不仅仅是考试成绩。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>你所在的学校，体育课有没有被挤占？课间十分钟能不能走出教室？健康学校建设把这些问题摆上台面。但“健康”和“学习”一定冲突吗？运动后上课更精神，还是更累？我们可以从自己的体验出发，想想什么样的校园才真正有利于成长。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>体育与健康（人教版）七年级全一册第一章·体育与健康理论知识，涉及“健康的生活方式”与“体育锻炼对身心健康的影响”。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：最近，全国健康学校建设试点交流活动举行。新闻里提到“健康第一”的理念。我放下手机，看了看课表——下周体育课又被数学老师借走了。健康学校，离我们还有多远？</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">⚽</div>
+      <h2>体育</h2>
+    </div>
+
+    <div class="overview">本周体育栏目捷报频传、活动丰富。射击世锦赛中国队斩获13金、7个奥运席位，创奥项世锦赛最好成绩；中国田径队以3金4银2铜结束青奥会征程。体育产业迈向7万亿新征程，中国足球职业联赛治理见实效，内蒙古明确体育强区目标。群众体育方面，四川德阳幼儿户外活动、山东潍坊小篮球蓬勃开展，奥运冠军与山区学生相约，中华体育精神颂活动在四川甘孜举行，长征精神与体育精神在大渡河畔交响。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>射击世锦赛中国队拿下13金、7个奥运席位</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/pic/yctp/202611/t20261114_20066116.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>射击是中国的传统优势项目，但奥运席位需要通过世锦赛等国际赛事争取。每个国家在每个小项上最多只能获得两个奥运参赛名额，所以“7个奥运席位”意味着中国射手在多个项目上拿到了通往奥运会的门票。13金则体现了整体厚度。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>射击比赛看似安静，其实对心理素质要求极高。运动员要在高度紧张中保持稳定，这和我们考试时控制情绪有相似之处。另外，中国队拿13金固然可喜，但奥运席位只有7个，说明“拿金牌”和“拿门票”是两回事。这提醒我们：评价成绩不能只看一个数字。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>体育与健康（人教版）八年级全一册第九章·体育与健康知识，涉及“竞技体育与奥林匹克运动”中关于奥运参赛资格与项目规则的内容。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：13金、7个奥运席位——中国射击队在世锦赛上交出了一份亮眼答卷。但你可能不知道，金牌数和奥运门票数并不是一回事。这背后，是一套精密的奥运资格体系，也是运动员日复一日的心理训练。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>奥运冠军与山区学生的体育之约</h3>
+      <div class="meta">
+        <span class="source-tag">华奥星空</span>
+        <a href="https://www.sports.cn/tcdt/tccmxx/2026/1112/714242.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>奥运冠军走进山区学校，不只是“明星见面会”。这类活动通常包含体育课示范、器材捐赠、励志分享等环节，目的是让体育资源薄弱地区的孩子也能感受运动乐趣。近年来，体育支教、冠军进校园等做法逐渐常态化，成为促进教育公平的一种方式。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>一次冠军来访，能给山区孩子带来什么？是短暂的兴奋，还是长久的改变？如果冠军走了，体育课还是老样子，那这次活动的意义在哪里？我们可以讨论：外部资源注入和本地体育师资建设，哪个更根本？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>道德与法治（人教版）八年级上册第四单元·维护国家利益，涉及“关心国家发展”中关于教育公平与资源共享的讨论；同时可联系体育与健康课程中“体育精神”的内容。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：当奥运冠军站在山区学校的土操场上，孩子们的眼睛亮了。新闻照片里，一个男孩摸着冠军的金牌，笑得合不拢嘴。但我在想：冠军离开之后，这块操场上的体育课，会有什么不一样吗？</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">💰</div>
+      <h2>经济</h2>
+    </div>
+
+    <div class="overview">本周经济栏目显示中国经济稳中向好、开放合作深化。10月高频数据折射经济韧性，物价运行总体平稳，双11购物车折射消费新意，进博会“反向定制”重塑全球好物，海外中小微企业借进博会“被看见”。区域经济一体化至关重要，共建普惠包容的开放型亚太经济成为共识。国有企业做强做优做大获得坚强保障，一湖碧水“商量”出甜蜜经济与民生幸福，扬州散货船出口韩国，消费者加油出现新变化。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>从“双11”购物车看消费新意</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/zxbd/202611/t20261112_20065848.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>“双11”早已不只是打折促销。近年来，绿色消费、国货潮品、以旧换新、即时零售等新趋势不断涌现。消费者的购物车里，既有性价比，也有情绪价值。这则新闻从购物车切入，观察的是消费结构的变化——人们把钱花在哪里，往往能反映经济生活的走向。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>你的“双11”购物车里有什么？是必需品，还是一时冲动？新闻说“消费新意”，但新意是否等于进步？比如“以旧换新”既刺激消费又减少浪费，值得提倡；但过度包装、冲动退货也带来资源消耗。我们可以想想：怎样花钱，才算对自己和社会都负责？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>道德与法治（人教版）九年级上册第一单元·富强与创新，涉及“走向共同富裕”中关于消费与经济发展的内容；也可联系地理（人教版）八年级上册第四章·中国的经济发展。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：今年“双11”，我没有熬夜抢购，但购物车里还是多了三样东西：一箱国货护肤品、一本二手书、一个以旧换新的耳机。新闻说，从购物车能看出消费新意。我想，我的购物车大概也藏着一个小小的经济故事。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>进博会贸易风向之新：“反向定制”重塑全球好物</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/roll/202611/t20261109_20065370.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>“反向定制”是指消费者先提出需求，企业再按需生产，而不是厂家先造出来再推销。在进博会上，这种模式让海外品牌更精准地对接中国消费者的偏好。它依赖大数据、柔性制造和供应链协同，是数字技术与实体经济融合的典型例子。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>反向定制听起来很“以消费者为中心”，但它会不会让我们看到的世界越来越窄？算法推荐我们喜欢的，厂家生产我们想要的，那“意外的好东西”还有机会出现吗？另外，定制化生产可能增加成本，最终谁来买单？这些问题值得琢磨。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>道德与法治（人教版）九年级上册第二单元·民主与法治，涉及“创新驱动发展”中关于科技创新与生活变化的内容；同时可联系地理（人教版）八年级上册第四章·中国的经济发展中“工业的分布与发展”。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：在进博会上，一款按照中国消费者反馈改设计的欧洲小家电成了爆款。工作人员说，这叫“反向定制”——先听消费者说，再开工生产。听起来很美好，但我忍不住想：如果什么都按我的喜好来，我还会遇到惊喜吗？</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🌟</div>
+      <h2>人物</h2>
+    </div>
+
+    <div class="overview">本周人物栏目聚焦青年成长与榜样力量。纪念孙中山诞辰160周年之际，回顾青年孙中山的香港岁月，儿童歌舞剧《少年孙中山》倾情上演。教育报道关注为热衷学艺的青年加把劲、培育中外人文交流的青年使者、为少年儿童播下国家安全种子。青年干部“手搓”App破解深山作业难题，展现基层创新担当；前直升机工程师有望成为德国首位女总统，引发对跨界从政的思考。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>青年干部“手搓”App破解深山作业难题</h3>
+      <div class="meta">
+        <span class="source-tag">中国青年网</span>
+        <a href="https://news.youth.cn/jsxw/202611/t20261112_16962347.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>“手搓”是网络用语，意思是自己动手从零做出来。这位青年干部在基层工作中发现，深山作业的数据记录靠纸笔效率低、易出错，于是自学编程，开发了一款轻量App。这体现了数字素养正在成为基层工作者的新技能，也说明解决问题的创新往往来自一线。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>一个非技术专业的青年干部能做出App，靠的是什么？是技术本身，还是对问题的真切了解？这让我们思考：创新一定要高学历、大团队吗？身边的小麻烦，有没有可能成为我们动手解决的起点？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>道德与法治（人教版）九年级上册第二单元·民主与法治，涉及“创新永无止境”中关于弘扬创新精神的内容；同时可联系信息科技（人教版）八年级上册第一单元·互联网应用与创新。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：深山里的巡护记录，过去靠一沓表格和一支笔。一位青年干部觉得太麻烦，干脆自己“手搓”了一个App。新闻标题很轻松，但我看到的是：真正的问题，往往是被离问题最近的人解决的。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>为少年儿童播下国家安全的种子</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202611/t20261109_2111539614.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>国家安全不只是军事和间谍，还包括粮食安全、网络安全、生态安全、文化安全等。对少年儿童进行国家安全教育，重点不是讲大道理，而是让他们知道：保守国家秘密、不随意拍摄敏感设施、识别网络谣言，都是维护国家安全的具体行动。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>“国家安全”听起来离我们很远，但其实很近。比如，有人在网上问你要学校周边的照片，你会给吗？看到一条“某地发生大事”的消息，你会先转发还是先核实？国家安全教育要培养的，正是这种日常的警觉和判断力。</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>道德与法治（人教版）八年级上册第四单元·维护国家利益，涉及“树立总体国家安全观”中关于国家安全的内容。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：上周班会课，老师放了一段国家安全教育短片。片子里，一个中学生随手拍了军港照片发到网上，结果被境外人员利用。我一开始觉得“太夸张了吧”，但仔细一想，国家安全这根弦，确实得从小绷紧。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🍟</div>
+      <h2>时事薯条</h2>
+    </div>
+
+    
+
+    
+    
+    <div class="fries-grid">
+      
+      <div class="fries-card">
+        <div class="fries-title">射击世锦赛中国队夺13金</div>
+        <div class="fries-comment">💬 神枪手们稳扎稳打，奥运席位是对汗水的最好回报。</div>
+        <span class="fries-knowledge">📚 射击项目考验心理稳定性，属于技能主导类表现准确性项群（体育与健康·人教版八年级全一册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">五中全会精神鼓舞青年学生</div>
+        <div class="fries-comment">💬 国家蓝图与个人成长同频，青春才能在时代中闪光。</div>
+        <span class="fries-knowledge">📚 党的二十届五中全会聚焦“十五五”规划，体现中国共产党领导是中国特色社会主义最本质特征（道德与法治·统编版九年级上册第四单元）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">AI儿童问诊便利背后藏风险</div>
+        <div class="fries-comment">💬 技术再智能也替代不了医生的望闻问切，健康大事勿轻信屏幕。</div>
+        <span class="fries-knowledge">📚 人工智能应用需遵循伦理与法律边界，医疗诊断需个体化判断（信息科技·人教版八年级上册第三单元）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">深圳科创游打卡“未来之城”</div>
+        <div class="fries-comment">💬 创新之城开放迎客，科技旅游让未来触手可及。</div>
+        <span class="fries-knowledge">📚 深圳是我国经济特区和科技创新中心，毗邻香港，位于珠江三角洲（地理·人教版八年级下册第七章）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">纪念孙中山诞辰160周年</div>
+        <div class="fries-comment">💬 振兴中华的接力棒，已传到我们手中。</div>
+        <span class="fries-knowledge">📚 孙中山领导辛亥革命，推翻君主专制制度，提出三民主义（历史·统编版八年级上册第三单元）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">鲁班工坊贡献全球治理中国范例</div>
+        <div class="fries-comment">💬 职业教育走出去，既授人以渔，也架起友谊桥。</div>
+        <span class="fries-knowledge">📚 鲁班工坊是职业教育国际合作的品牌项目，体现共商共建共享的全球治理观（道德与法治·统编版九年级下册第二单元）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">10月高频数据折射经济稳中向好</div>
+        <div class="fries-comment">💬 数据背后是市场活力与政策定力的共同作用。</div>
+        <span class="fries-knowledge">📚 经济增长通常用GDP、就业、物价等指标衡量，稳中向好意味着主要指标处于合理区间（道德与法治·统编版九年级上册第一单元）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">青年干部“手搓”App破解深山作业难题</div>
+        <div class="fries-comment">💬 创新不在大小，解决真问题就是真本事。</div>
+        <span class="fries-knowledge">📚 创新是引领发展的第一动力，基层实践是创新的重要源泉（道德与法治·统编版九年级上册第二单元）</span>
+      </div>
+      
+    </div>
+    
+
+    
+    
+  </section>
+  
+
+  <!-- ============ 副刊 ============ -->
+  
+  <section class="supplement">
+    <h2>🎭 副刊</h2>
+    <div class="topic">本期话题：AI时代，我们如何学习与成长</div>
+    
+    <div class="perspective">
+      <div class="role">教育技术专家</div>
+      <p>AI正在重塑学习流程，从个性化推荐到智能辅导，技术让因材施教有了更大可能。但技术不是万能药，过度依赖会削弱学生自主思考与深度阅读的能力。学校应把AI作为工具而非替代，重点培养学生的问题定义、信息甄别和批判性思维。同时，县域学校要避免数字鸿沟，让每个孩子都能被技术“看见”。教育者需要设计人机协同的学习任务，让AI承担重复性工作，把宝贵时间留给探究、合作与创造。</p>
+    </div>
+    
+    <div class="perspective">
+      <div class="role">心理教师</div>
+      <p>青少年处于自我认同关键期，AI陪伴产品能提供即时回应，缓解孤独感，但真实的人际互动不可替代。长期依赖虚拟陪伴可能影响共情能力与社会交往技能的发展。学校和家庭要关注孩子使用AI的情感动机，引导他们区分“被算法迎合”与“被真实理解”。成长中的烦恼需要被倾听，但更需要真实关系中的磨合与支持。AI可以作为情绪觉察的辅助工具，但不能成为情感避风港。培养健康的同伴关系和师生信任，才是心理韧性的根基。</p>
+    </div>
+    
+    <div class="perspective">
+      <div class="role">科技伦理研究者</div>
+      <p>AI进校园涉及数据隐私、算法公平和内容安全等伦理问题。学生数据一旦泄露或被滥用，后果严重；算法偏见可能加剧教育不平等。我们需要建立清晰的伦理规范：AI教育产品应遵循最小必要数据原则，算法决策要可解释、可申诉，内容要符合青少年认知水平。同时，要开展AI素养教育，让学生理解技术背后的价值观，学会质疑和负责任地使用。技术向善不是口号，而是制度设计、产品审查和用户教育的合力。</p>
+    </div>
+    
+  </section>
+  
+
+  <!-- ============ 观点碰撞 ============ -->
+  
+  <section class="debate">
+    <h2>⚔️ 观点碰撞</h2>
+    <div class="debate-topic">本期话题：AI儿童问诊，是帮手还是隐患？</div>
+    <div class="debate-sides">
+      
+      <div class="side side-a">
+        <span class="side-label">观点 A</span>
+        支持方认为，AI儿童问诊能缓解儿科医疗资源紧张，尤其在偏远地区，家长可通过智能工具获得初步筛查和就医建议，避免盲目跑医院。AI可以7×24小时响应，提供标准化健康知识，减少焦虑。对于常见病、轻微症状，AI的初步判断能帮助家庭合理决策，节约时间和成本。随着技术迭代，AI问诊的准确率在提升，若与线下医生形成互补，可成为分级诊疗的有效入口。关键在于规范使用场景和明确责任边界，而不是因噎废食。
+      </div>
+      
+      
+      <div class="side side-b">
+        <span class="side-label">观点 B</span>
+        反对方强调，儿童病情变化快、表述能力弱，AI缺乏查体和个体化判断，误判风险高。依赖AI问诊可能延误重症识别，家长盲目相信屏幕建议会错过最佳就医时机。医疗行为涉及法律责任，AI出错谁来担责？此外，儿童健康数据敏感，商业平台的数据安全令人担忧。医学是经验与人文的结合，AI无法替代医生的综合判断和医患沟通。在儿科领域，谨慎比便利更重要，应严格限制AI问诊的适用范围，强化线下医疗的可及性。
+      </div>
+      
+    </div>
+    
+    <div class="stance">
+      <span class="stance-label">🤔 AI 的立场</span>
+      双方观点均有合理前提。支持方成立的前提是：AI仅作为辅助筛查工具，明确标注局限性，且与线下医疗无缝衔接；反对方成立的前提是：AI被误用为诊断依据，缺乏监管和问责机制。AI儿童问诊的健康发展，取决于制度设计：建立准入标准、明确责任主体、保障数据安全、加强公众教育。技术可以成为帮手，但必须置于医疗安全框架之下，让便利与安全并行。
+    </div>
+    
+  </section>
+  
+
+  <!-- ============ 本周思考题 ============ -->
+  
+  <section class="discussion">
+    <h2>💡 本周思考题</h2>
+    <div class="question">当AI越来越懂你，你还会主动向真人求助吗？</div>
+    
+    <div class="hints">
+      <div class="hints-title">🧭 思路提示</div>
+      <ul><li>思考AI陪伴与真人交流在情感支持、信息准确性、责任承担上的差异。</li><li>结合自身经历，分析在什么情境下你更愿意选择AI，什么情境下必须找真人。</li><li>从隐私、伦理、人际关系等角度，探讨如何与AI建立健康的边界。</li></ul>
+    </div>
+    
+    
+    <div class="writing-tips">
+      <div class="hints-title">✍️ 写作建议</div>
+      <p>写作时可从具体场景切入，比如一次用AI问诊或AI聊天的经历，引出便利与困惑。然后对比真人帮助的不可替代性，如医生的查体、朋友的共情。接着分析AI的局限与风险，提出使用原则。最后落脚到人的主体性：技术是工具，成长需要真实世界的碰撞与连接。注意用事实和细节支撑观点，避免空泛议论。</p>
+    </div>
+    
+  </section>
+  
+
+  <footer>
+    <div><span class="brand">大少年新闻周报</span> · 每周六更新</div>
+    <div>由 DeepSeek 生成分析 · 数据来自新华网、人民网等公开新闻源</div>
+    <div>本报告仅供学习参考</div>
+  </footer>
+</div>
+</body>
+</html>
