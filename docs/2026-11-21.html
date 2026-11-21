@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大少年新闻周报 · 2026-11-21</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5; color: #1a1a1a; line-height: 1.75;
+    padding: 16px; -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 820px; margin: 0 auto; }
+
+  /* ===== 封面 ===== */
+  .cover {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb347 100%);
+    color: #fff; padding: 44px 34px; border-radius: 20px;
+    margin-bottom: 26px; box-shadow: 0 12px 32px rgba(255,107,53,0.22);
+    position: relative; overflow: hidden;
+  }
+  .cover::before {
+    content: ""; position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .cover::after {
+    content: ""; position: absolute; bottom: -80px; right: 60px;
+    width: 140px; height: 140px; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .cover-badge {
+    display: inline-block; background: rgba(255,255,255,0.22);
+    padding: 5px 14px; border-radius: 20px; font-size: 13px;
+    margin-bottom: 16px; backdrop-filter: blur(4px);
+  }
+  .cover h1 { font-size: 32px; margin-bottom: 18px; letter-spacing: 1px; }
+  .cover .headline {
+    font-size: 19px; line-height: 1.6; font-weight: 500;
+    padding: 16px 20px; background: rgba(255,255,255,0.16);
+    border-radius: 12px; margin-bottom: 20px; backdrop-filter: blur(4px);
+  }
+  .cover .keywords { margin-bottom: 22px; }
+  .cover .keyword {
+    display: inline-block; background: rgba(255,255,255,0.28);
+    padding: 4px 12px; border-radius: 14px; font-size: 13px;
+    margin: 0 8px 8px 0;
+  }
+  .cover .points { list-style: none; }
+  .cover .points li {
+    padding: 8px 0 8px 24px; position: relative; font-size: 15px;
+    border-bottom: 1px dashed rgba(255,255,255,0.2);
+  }
+  .cover .points li:last-child { border-bottom: none; }
+  .cover .points li::before {
+    content: "▸"; position: absolute; left: 0; opacity: 0.85;
+  }
+
+  /* ===== 栏目 ===== */
+  .category {
+    background: #fff; border-radius: 20px; padding: 34px 32px;
+    margin-bottom: 24px; box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+  }
+  .category-title {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px; padding-bottom: 16px;
+    border-bottom: 2px solid #f5f5f5;
+  }
+  .category-title .icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; background: linear-gradient(135deg, #ff6b35, #f7931e);
+    box-shadow: 0 4px 12px rgba(255,107,53,0.25);
+  }
+  .category-title h2 { font-size: 22px; color: #ff6b35; font-weight: 700; }
+
+  .overview {
+    background: linear-gradient(135deg, #fff8f3 0%, #fff3ec 100%);
+    padding: 20px 22px; border-radius: 14px; margin-bottom: 26px;
+    font-size: 15px; color: #444; line-height: 1.8;
+    border-left: 4px solid #ffb347;
+  }
+
+  /* ===== 重点新闻 ===== */
+  .highlight {
+    padding-top: 24px; margin-top: 24px; border-top: 1px dashed #ebeef2;
+  }
+  .highlight:first-of-type { padding-top: 0; margin-top: 0; border-top: none; }
+  .highlight h3 {
+    font-size: 18px; margin-bottom: 10px; line-height: 1.5; color: #222;
+  }
+  .highlight .meta {
+    font-size: 13px; color: #999; margin-bottom: 18px;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .highlight .meta .source-tag {
+    background: #f5f5f5; color: #666; padding: 2px 10px;
+    border-radius: 10px; font-size: 12px;
+  }
+  .highlight .meta a { color: #ff6b35; text-decoration: none; font-weight: 500; }
+  .highlight .meta a:hover { text-decoration: underline; }
+
+  .dimension {
+    margin-bottom: 12px; padding: 14px 18px;
+    background: #fafbfc; border-radius: 12px;
+    border-left: 4px solid #ddd; transition: background 0.2s;
+  }
+  .dimension:hover { background: #f5f7fa; }
+  .dimension .label {
+    font-weight: 600; font-size: 13px; margin-bottom: 6px;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .dimension p { font-size: 14px; color: #333; line-height: 1.8; }
+  .dimension.knowledge { border-left-color: #4a90e2; }
+  .dimension.knowledge .label { color: #4a90e2; }
+  .dimension.history { border-left-color: #8e6e53; }
+  .dimension.history .label { color: #8e6e53; }
+  .dimension.global { border-left-color: #16a085; }
+  .dimension.global .label { color: #16a085; }
+  .dimension.thinking { border-left-color: #9b59b6; }
+  .dimension.thinking .label { color: #9b59b6; }
+  .dimension.subject { border-left-color: #27ae60; }
+  .dimension.subject .label { color: #27ae60; }
+  .dimension.writing { border-left-color: #e67e22; }
+  .dimension.writing .label { color: #e67e22; }
+
+  /* ===== 时事薯条 ===== */
+  .fries-grid {
+    display: grid; grid-template-columns: 1fr; gap: 12px;
+  }
+  .fries-card {
+    background: #fffdf5; border-radius: 12px; padding: 14px 18px;
+    border-left: 4px solid #f5b041;
+  }
+  .fries-card .fries-title {
+    font-size: 15px; font-weight: 600; color: #333; margin-bottom: 6px;
+  }
+  .fries-card .fries-comment {
+    font-size: 13px; color: #666; margin-bottom: 6px;
+  }
+  .fries-card .fries-knowledge {
+    font-size: 12px; color: #d68910;
+    background: #fff8e6; padding: 4px 10px; border-radius: 8px;
+    display: inline-block;
+  }
+
+  /* ===== 副刊 ===== */
+  .supplement {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #fff; border-radius: 20px; padding: 36px 32px;
+    margin-bottom: 24px; box-shadow: 0 8px 24px rgba(44,62,80,0.2);
+  }
+  .supplement h2 {
+    font-size: 24px; margin-bottom: 10px; display: flex;
+    align-items: center; gap: 10px; color: #fff;
+  }
+  .supplement .topic {
+    font-size: 15px; opacity: 0.85; margin-bottom: 26px;
+    padding-left: 34px;
+  }
+  .perspective {
+    background: rgba(255,255,255,0.08); border-radius: 14px;
+    padding: 20px 22px; margin-bottom: 14px;
+    border-left: 3px solid #ffb347;
+    backdrop-filter: blur(4px);
+  }
+  .perspective:last-child { margin-bottom: 0; }
+  .perspective .role {
+    font-size: 13px; font-weight: 600; color: #ffb347;
+    margin-bottom: 8px; letter-spacing: 0.5px;
+  }
+  .perspective p { font-size: 14px; line-height: 1.85; color: #eaeaea; }
+
+  /* ===== 观点碰撞 ===== */
+  .debate {
+    background: #fff; border-radius: 20px; padding: 34px 32px;
+    margin-bottom: 24px; box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+  }
+  .debate h2 {
+    font-size: 22px; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 10px; color: #c0392b;
+  }
+  .debate .debate-topic {
+    font-size: 16px; color: #555; margin-bottom: 24px;
+    padding-left: 34px;
+  }
+  .debate-sides {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 640px) {
+    .debate-sides { grid-template-columns: 1fr; }
+  }
+  .side {
+    padding: 18px 20px; border-radius: 14px; font-size: 14px; line-height: 1.8;
+  }
+  .side-a {
+    background: #eaf4fd; border-left: 4px solid #3498db; color: #2c3e50;
+  }
+  .side-b {
+    background: #fdeaea; border-left: 4px solid #e74c3c; color: #2c3e50;
+  }
+  .side .side-label {
+    font-weight: 700; font-size: 13px; margin-bottom: 8px; display: block;
+  }
+  .side-a .side-label { color: #3498db; }
+  .side-b .side-label { color: #e74c3c; }
+  .stance {
+    background: #f8f9fa; padding: 18px 20px; border-radius: 14px;
+    border-left: 4px solid #95a5a6; font-size: 14px; line-height: 1.8;
+    color: #444;
+  }
+  .stance .stance-label {
+    font-weight: 700; font-size: 13px; color: #7f8c8d;
+    margin-bottom: 8px; display: block;
+  }
+
+  /* ===== 思考题 ===== */
+  .discussion {
+    background: linear-gradient(135deg, #fffbea 0%, #fff5d6 100%);
+    border-radius: 20px; padding: 34px 32px; margin-bottom: 24px;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+    border: 1px solid #ffe4a8;
+  }
+  .discussion h2 {
+    font-size: 22px; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px; color: #d68910;
+  }
+  .discussion .question {
+    font-size: 17px; font-weight: 600; color: #333;
+    padding: 18px 20px; background: #fff; border-radius: 12px;
+    margin-bottom: 20px; line-height: 1.7;
+    border-left: 4px solid #f5b041;
+  }
+  .hints-title {
+    font-size: 14px; font-weight: 600; color: #d68910;
+    margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+  }
+  .hints ul { list-style: none; margin-bottom: 20px; }
+  .hints li {
+    padding: 8px 0 8px 22px; position: relative;
+    font-size: 14px; color: #555;
+  }
+  .hints li::before {
+    content: "○"; position: absolute; left: 0; color: #f5b041;
+    font-weight: bold;
+  }
+  .writing-tips {
+    background: #fff; border-radius: 12px; padding: 16px 20px;
+  }
+  .writing-tips p { font-size: 14px; color: #555; line-height: 1.8; }
+
+  /* ===== 页脚 ===== */
+  footer {
+    text-align: center; color: #999; font-size: 13px;
+    padding: 32px 0 12px; line-height: 1.8;
+  }
+  footer .brand { color: #ff6b35; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ============ 封面导读 ============ -->
+  
+  <header class="cover">
+    <div class="cover-badge">📅 2026-11-21 · 每周六更新</div>
+    <h1>📰 大少年新闻周报</h1>
+    <div class="headline">APEC聚深圳，中国主场外交让亚太合作看得见摸得着</div>
+    
+    <div class="keywords">
+      <span class="keyword"># APEC深圳会议</span><span class="keyword"># 亚太共同体</span><span class="keyword"># 卫星互联网</span><span class="keyword"># 虚假宣传</span><span class="keyword"># 经济向新</span>
+    </div>
+    
+    
+    <ul class="points">
+      <li>APEC领导人非正式会议在深圳举行，习近平发表重要讲话</li><li>《深圳展望》发布，为亚太合作树立新里程碑</li><li>我国成功发射卫星互联网低轨30组卫星</li><li>儿童产品虚假宣传被罚，消费者权益受关注</li><li>10月经济数据出炉，向新向优态势明显</li>
+    </ul>
+    
+  </header>
+  
+
+  <!-- ============ 各栏目 ============ -->
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🔥</div>
+      <h2>头条</h2>
+    </div>
+
+    <div class="overview">本周头条聚焦中国主场外交。习近平主席在深圳出席亚太经合组织第三十三次领导人非正式会议并发表重要讲话，会见泰国、马来西亚、智利等多国领导人，出席工商领导人峰会，在大湾区考察调研。这一系列外交活动围绕“建设亚太共同体，促进共同繁荣”展开，释放中国坚持开放合作、推动高质量发展的明确信号。对中学生来说，理解APEC不只是记住会议名称，更要看到“开放”如何影响普通人的生活。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>习近平主持亚太经合组织第三十三次领导人非正式会议并发表重要讲话</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/zxbd/202611/t20261120_20066979.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>亚太经合组织（APEC）是亚太地区层级最高、领域最广、最具影响力的经济合作机制。中国曾于2001年和2014年两次主办APEC领导人非正式会议，2026年深圳会议是第三次。APEC的21个成员经济体GDP总量约占全球的60%，贸易量约占世界总量的47%。会议通常聚焦贸易投资自由化、区域经济一体化、互联互通等议题，领导人非正式会议是最高级别活动。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>APEC成立于1989年，中国于1991年加入。2001年上海会议推动WTO多哈回合谈判启动；2014年北京会议启动亚太自贸区进程。此次深圳会议是中国在新时代推动高水平对外开放的重要契机，延续了从参与到引领的历程。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>APEC与欧盟、北美自贸区并列为区域经济合作典范。中国通过APEC倡导亚太自贸区，与美国的“印太经济框架”形成对比，展现不同合作理念。中国主张开放包容，推动构建亚太命运共同体。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>APEC会议为何选在深圳？这既是对改革开放成就的展示，也体现中国以开放促改革的决心。你可以思考：大型国际会议如何影响举办城市？深圳的科技创新和开放经验能否为亚太合作提供借鉴？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版高中思想政治必修2《经济与社会》第三单元·经济全球化与对外开放；人教版初中道德与法治九年级下册第一单元·我们共同的世界。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：开放合作、命运与共。开头示例：“当亚太经合组织的旗帜在深圳升起，世界再次聚焦中国。从上海到北京，再到深圳，APEC见证了中国从开放学习者到贡献者的转变。这座年轻的城市，正以创新和包容，讲述着中国与世界共赢的故事。”</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>习近平总书记引领推动粤港澳大湾区高质量发展</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/zxbd/202611/t20261119_20066808.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>粤港澳大湾区包括香港、澳门和珠三角九市，总面积5.6万平方公里，人口约8600万，经济总量超13万亿元。2019年《粤港澳大湾区发展规划纲要》发布，目标是建设国际一流湾区和世界级城市群。大湾区在制度创新、科技创新、基础设施联通等方面取得显著进展，如广深港高铁、港珠澳大桥等。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>大湾区概念源于2015年国家“十三五”规划，2017年首次写入政府工作报告。从改革开放初期的“三来一补”到如今的创新驱动，珠三角经历了产业升级。香港、澳门回归后，与内地合作不断深化，大湾区建设是“一国两制”实践的新篇章。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>世界三大湾区为纽约湾区、旧金山湾区、东京湾区。粤港澳大湾区经济总量已接近纽约湾区，创新能力突出。中国通过制度创新打破壁垒，推动人流、物流、资金流、信息流高效流动，为全球区域一体化提供新范式。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>大湾区涉及“一国两制、三个关税区、三种货币”，制度差异既是挑战也是机遇。你可以思考：如何平衡不同制度下的规则衔接？青年人在大湾区有哪些发展机会？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版高中地理必修第二册第四章·区域发展战略；人教版初中道德与法治九年级上册第四单元·和谐与梦想。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：创新与协同发展。开头示例：“站在港珠澳大桥上眺望，碧海蓝天间，粤港澳大湾区正拔节生长。这里既有香港的金融基因，又有深圳的创新活力，还有珠三角的制造底蕴。一个世界级湾区，正在中国南海之滨崛起。”</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🇨🇳</div>
+      <h2>中国</h2>
+    </div>
+
+    <div class="overview">国内新闻呈现“硬实力”与“软治理”并行的图景。一方面，卫星互联网低轨卫星成功发射、多领域科技捷报频传，展现创新驱动；另一方面，儿童内衣和墨镜虚假宣传被曝光处罚，提醒消费者权益保护就在身边。深圳APEC相关报道从“深圳故事”讲到“深圳启示”，把城市发展经验与亚太合作联系起来。这些新闻共同说明：国家发展既需要科技突破，也需要市场规范和民生保障。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>我国成功发射卫星互联网低轨30组卫星</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/pic/yctp/202611/t20261121_20067190.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>低轨卫星互联网是通过数百至数万颗低轨道卫星组成星座，为全球提供宽带互联网接入的系统。低轨卫星距地面约500-2000公里，信号延迟低，适合偏远地区通信。中国已启动“GW”星座计划，旨在构建覆盖全球的卫星互联网。此次发射是组网建设的重要一步。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>中国航天自1970年东方红一号起步，2003年神舟五号载人飞天，2015年提出“互联网+航天”概念。2020年卫星互联网被纳入“新基建”，2021年成立中国星网公司，加速低轨星座部署。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>美国SpaceX的“星链”已发射超5000颗卫星，英国OneWeb、亚马逊“柯伊伯”也在布局。低轨轨道和频谱资源有限，国际竞争激烈。中国正加快组网，争取在太空互联网领域占据一席之地。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>卫星互联网能解决偏远地区上网难题，但也带来太空垃圾、天文观测干扰等问题。你可以思考：如何平衡商业开发与太空环境保护？中国如何在国际规则制定中发挥作用？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版高中物理必修第二册第六章·万有引力与航天；人教版初中地理八年级上册第一章·从世界看中国。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：科技自立自强。开头示例：“当火箭划破夜空，30颗卫星顺利入轨，中国卫星互联网星座再添新成员。从东方红一号到低轨星座，中国航天人用半个多世纪，将梦想写满星空。如今，一张覆盖全球的太空网络正加速织就。”</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>宣称儿童墨镜“助力儿童远视储备”“降低近视”，KK树品牌涉虚假宣传被罚</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/roll/202611/t20261120_20067089.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>儿童墨镜市场近年来快速增长，部分商家宣称产品具有“防近视”“提升远视储备”等功能。实际上，远视储备是儿童眼球发育过程中的生理性远视，会随年龄增长自然消耗。目前没有科学证据表明墨镜能降低近视发生率。虚假宣传违反《广告法》和《反不正当竞争法》。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>中国儿童近视率居高不下，2020年数据显示青少年总体近视率52.7%。家长焦虑催生“护眼经济”，各种产品层出不穷。监管部门近年来加大整治力度，2021年市场监管总局开展儿童和学生用品安全守护行动。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>日本、韩国等东亚国家也面临儿童近视高发问题，但监管严格。美国联邦贸易委员会（FTC）对虚假健康宣称处罚严厉。中国正在完善儿童产品标准体系，加强事中事后监管。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>商家利用家长焦虑营销，折射出近视防控的复杂性。你可以思考：如何科学防控近视？除了产品，社会、学校、家庭应承担什么责任？消费者如何辨别虚假宣传？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版初中道德与法治八年级上册第二单元·遵守社会规则；人教版高中思想政治必修2《经济与社会》第二单元·经济发展与社会进步。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：诚信与责任。开头示例：“一副儿童墨镜，被商家吹嘘成‘防近视神器’，背后是家长焦虑与商业利益的交织。当虚假宣传被罚，我们看到的不仅是个案，更是对诚信经营和科学精神的呼唤。守护孩子的明亮双眼，需要全社会共同努力。”</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🌍</div>
+      <h2>世界</h2>
+    </div>
+
+    <div class="overview">国际版块围绕大国外交和全球治理展开。中俄美元首会晤、韩国总统谈APEC合作、拉美国家元首访华赴深圳，多国政要密集互动。外交部评价《深圳展望》是APEC合作新里程碑。同时，特朗普涉伊朗言论、土耳其教授抗议事件等提醒我们，世界并不平静。教育类国际新闻关注中小学春秋假制度、世界中文大会，说明教育交流也是国际交往的重要渠道。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>国际人士表示中俄美元首会晤为世界和平与稳定注入信心和动力</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/xtt/202611/t20261121_20067202.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>中俄美三国元首会晤是国际关系中的重大事件。三国均为联合国安理会常任理事国，对全球安全与发展负有特殊责任。会晤通常涉及战略稳定、地区热点、军控等议题。国际社会期待大国协调合作，共同应对全球性挑战。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>冷战时期中美苏大三角关系影响世界格局。1972年尼克松访华改变战略平衡。冷战结束后，中俄美关系经历多次调整。近年来，三国在多边框架下既有合作也有竞争，元首外交始终是管控分歧、推动合作的重要渠道。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>大国关系是国际秩序的基石。美国与盟友体系、中俄战略协作伙伴关系、中美竞争与合作并存。国际社会希望三国通过对话减少误判，在气候变化、防扩散等领域形成合力。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>大国会晤为何能影响世界？你可以思考：在多极化趋势下，大国协调机制如何更有效？中国在其中的角色是什么？小国如何在大国博弈中维护自身利益？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版高中思想政治必修1《中国特色社会主义》第四课·国际社会与外交政策；人教版初中道德与法治九年级下册第一单元·我们共同的世界。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：和平与发展。开头示例：“当三国元首的手握在一起，世界投来关注的目光。在动荡变革的时代，大国肩上的责任更重。一次会晤或许不能解决所有问题，但它传递的信号——对话而非对抗，合作而非冲突——正是世界最需要的信心。”</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>中小学春秋假期制度的国际透视</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202611/t20261119_2111543969.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>中小学春秋假是指在春季和秋季各增设一周左右的假期，通常与周末连休，形成小长假。中国部分城市已试点，如杭州自2014年起实施。春秋假旨在让学生有更多时间接触自然、参与社会实践，缓解学习压力，促进身心健康。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>中国中小学假期制度历经变迁。20世纪90年代实行双休日，1999年增设黄金周。近年来，随着“双减”政策推进，多地探索春秋假。国外如日本有春假、暑假、寒假，法国有分区假期制度，均注重劳逸结合。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>美国学校假期分散，暑假较长；英国有half-term假期；澳大利亚按学期划分假期。各国假期安排反映其教育理念和文化传统。中国春秋假试点借鉴国际经验，结合本土实际，探索更合理的假期结构。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>春秋假能否真正减轻学生负担？你可以思考：假期增多是否意味着学习时间减少？如何利用假期开展有意义的活动？城乡家庭对春秋假的接受度有何差异？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版初中道德与法治七年级上册第一单元·成长的节拍；人教版高中思想政治必修4《哲学与文化》第三单元·文化传承与文化创新。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：教育减负与全面发展。开头示例：“当秋天的一片落叶飘进课本，孩子们或许更想走进自然。春秋假，这个听起来美好的制度，正在中国一些城市试点。它不只是多放几天假，更是对教育节奏的重新思考——学习，不只在课堂。”</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🔬</div>
+      <h2>科学</h2>
+    </div>
+
+    <div class="overview">科学栏目呈现“AI+绿色+教育”的交叉趋势。外企高管看好AI与可再生能源领域对华合作，深圳科技城和大湾区创新优势成为观察样本。教育侧，科技研学、生命科学探秘、科技教育实验区建设、AI赋能学校治理等新闻密集出现，说明科技教育正在从课堂走向场景。对中学生而言，科学不只是公式和实验，更是理解社会如何运转的一把钥匙。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>从一座科技城，看大湾区向“新”而行</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/xtt/202611/t20261117_20066401.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>科技城是集研发、孵化、产业于一体的创新集聚区。大湾区科技城如深圳光明科学城、东莞松山湖科学城，聚焦信息、生命、新材料等领域。这些科技城依托大科学装置、高校和龙头企业，形成“基础研究+技术攻关+成果产业化”的全链条创新生态。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>从“三来一补”到自主创新，珠三角产业升级历经数十年。2008年国际金融危机后，广东推动“腾笼换鸟”，大力发展高新技术产业。如今大湾区科技城建设是创新驱动发展战略的缩影。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>美国硅谷、日本筑波科学城、韩国大德研究开发特区都是全球知名科技城。中国科技城在政府引导、市场驱动下快速崛起，但在原始创新、成果转化效率上仍有提升空间。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>科技城能否复制硅谷成功？你可以思考：创新需要哪些要素？政府与市场如何协同？大湾区科技城如何吸引全球人才？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版高中地理必修第二册第三章·产业区位因素；人教版初中道德与法治九年级上册第一单元·富强与创新。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：创新驱动发展。开头示例：“在深圳光明科学城，实验室的灯光常常亮到深夜。这里没有流水线的喧嚣，却有改变未来的力量。从制造到创造，大湾区正在经历一场深刻的蜕变，而科技城，正是这场蜕变的引擎。”</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>九大行动建设科技教育实验区</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202611/t20261121_2111545033.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>科技教育实验区是教育部推动的试点项目，旨在通过课程改革、师资培训、资源整合等九大行动，提升中小学科技教育质量。实验区将探索跨学科学习、项目式教学，培养学生科学素养和创新能力。此举是落实“科教兴国”战略的具体举措。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>中国科技教育从20世纪80年代“计算机普及”起步，2001年课改增设科学课，2017年小学科学课标修订，强调探究式学习。近年来，“双减”后科技类校外培训规范发展，学校主阵地作用凸显。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>美国STEM教育、英国国家科学教育战略、芬兰现象式教学均注重跨学科和实践。中国科技教育实验区借鉴国际经验，结合本土实际，推动科学教育从知识传授向素养培育转型。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>科技教育如何避免“重比赛轻普及”？你可以思考：实验区能否带动农村学校科技教育？如何评价科技教育的效果？企业和社会机构应扮演什么角色？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版初中物理八年级上册序言·科学之旅；人教版高中物理必修第一册第一章·运动的描述。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：科学素养与未来。开头示例：“当小学生用编程让机器人跳舞，当初中生在实验室培育微生物，科技教育正悄悄改变课堂。九大行动建设实验区，不只是为了培养科学家，更是为了让每个孩子拥有科学思维，从容面对未来。”</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🎨</div>
+      <h2>文化</h2>
+    </div>
+
+    <div class="overview">文化栏目既有传统技艺的校园传承，也有数字时代的文化传播。襄阳学生学习非遗竹编、乌鲁木齐孩子感受传统文化，网络文明大讲堂关注“数字里的文化遗产”，世界中文大会和“汉语桥”25周年则把中文学习与跨文化理解连在一起。农村学校文化建设系列文章从乡土根脉切入，提示文化自信不是抽象口号，而是从身边的一草一木、一言一行生长出来的。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>两张历史性同框照，为何在中国定格？</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/xtt/202611/t20261121_20067201.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>历史性同框照通常指具有重大外交或历史意义的合影。照片作为视觉档案，承载着时代记忆。在中国定格的同框照，可能涉及大国关系、地区合作等。照片背后的故事和象征意义，往往比画面本身更丰富。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>外交摄影史上不乏经典同框：1972年尼克松访华、1989年中苏关系正常化、2000年朝韩首脑会晤等。每一张照片都是国际关系变迁的注脚。中国作为东道主，多次为历史性会晤提供舞台。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>国际峰会合影是外交惯例，但某些同框因打破常规而载入史册。如2018年新加坡“金特会”、2023年沙特伊朗北京对话。中国在促成对话中展现独特作用。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>一张照片为何能引发全球关注？你可以思考：影像在外交传播中有何力量？历史性同框是偶然还是必然？中国如何通过主场外交塑造国际形象？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版高中历史必修《中外历史纲要（下）》第九单元·当代世界发展特点；人教版初中道德与法治九年级下册第二单元·世界舞台上的中国。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：见证历史。开头示例：“快门按下的瞬间，历史被定格。两张同框照，在中国土地上诞生，却牵动世界目光。照片会泛黄，但那一刻的握手、微笑与并肩，已成为国际关系史上不可磨灭的印记。”</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>湖北襄阳：学习非遗竹编技艺</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzcg/xwy/tpxw/202611/t20261120_2111544911.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>竹编是中国传统手工艺，以竹丝篾片编织各种器物，距今已有数千年历史。2008年竹编列入国家级非物质文化遗产名录。襄阳竹编融合南北风格，工艺精细。学生学习竹编，不仅是技艺传承，更是对耐心和创造力的培养。</p></div>
+      <div class="dimension history">
+        <span class="label">📜 历史纵深</span><p>竹编起源于新石器时代，河姆渡遗址出土过竹编器物。唐宋时期竹编工艺成熟，明清形成地方特色。近代工业化冲击下，竹编一度衰落，近年来非遗保护让老手艺焕发新生。</p></div>
+      <div class="dimension global">
+        <span class="label">🌐 全球对比</span><p>日本竹编（如饭冢琅玕）、韩国竹编、东南亚藤竹工艺各具特色。联合国教科文组织将竹编列入人类非遗代表作名录。中国竹编在传承中创新，走向国际舞台。</p></div>
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>非遗进校园如何避免“走过场”？你可以思考：传统手工艺如何吸引年轻人？竹编能否与现代设计结合？保护非遗，是保留原样还是鼓励创新？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版初中美术八年级上册第五单元·中国民间美术；人教版高中美术必修《美术鉴赏》第九课·中国民间美术。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>主题：传承与创新。开头示例：“一根青竹，在指尖翻飞，变成栩栩如生的蜻蜓。襄阳的孩子们围坐在一起，学习祖辈传下的竹编技艺。老手艺走进新课堂，传承的不仅是技法，更是一份对文化的敬畏与热爱。”</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">📖</div>
+      <h2>教育</h2>
+    </div>
+
+    <div class="overview">教育新闻覆盖从少先队辅导员大赛到高校毕业生就业的完整链条。校园足球、跑步、农耕体验等新闻强调“健康第一”；视力健康守护账、优质教育资源供给、江西“十五五”教育规划等关注制度保障。校园职场真人秀和职业规划大赛则把“求职”提前带进校园。整体看，教育正在从单一分数导向转向身心健康、实践能力和生涯规划并重的方向。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>校园职场真人秀“解锁”求职新场景</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202611/t20261121_2111545021.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>校园职场真人秀是一种将真实求职过程搬上屏幕的教育创新形式。它通过模拟简历投递、面试问答、职场任务等环节，让中学生在安全环境中体验求职全流程。这种形式最早出现在高校就业指导中，如今正逐步下沉到中学阶段，帮助学生提前建立职业认知，理解不同岗位的能力要求，并反思自己的兴趣与特长。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>真人秀的“秀”字提醒我们：镜头前的表现不等于真实能力。当求职被包装成节目，我们该关注的是流程背后的能力标准，还是戏剧化的冲突？如果你参加这样的活动，你会更在意评委的点评，还是同伴的投票？这种形式能否真正帮你找到适合的方向，还是只是制造了一种“提前焦虑”？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版七年级上册第三单元·师长情谊（道德与法治），涉及师生关系与成长话题；可延伸至人教版九年级下册第七课·职业与梦想。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：灯光亮起，简历递出，17岁的李然站在模拟面试间里，手心微微出汗。这不是电视里的求职节目，而是学校新开设的“职场真人秀”现场。当同龄人还在刷题时，他们已经开始学习如何介绍自己——这究竟是教育的超前，还是成长的必修课？</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>江西：印发“十五五”教育发展规划</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzcg/xwy/wzxw/202611/t20261119_2111544331.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>“十五五”规划是指2026年至2030年的国家发展蓝图，教育规划是其中重要组成部分。江西省的规划通常会涉及学位供给、师资配置、职业教育产教融合、教育数字化等方向。对中学生而言，这意味着未来几年本地学校可能增加新校区、开设新课程、引入更多实践资源，也意味着升学路径和课程选择可能发生变化。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>规划是写给未来的承诺，但执行需要时间和资源。当文件里说“扩大优质教育资源供给”，你所在的城市会先建新学校，还是先培训老师？规划中的“优质”由谁来定义——是考试分数，还是学生的综合发展？作为学生，你能通过什么渠道了解并参与自己学校的规划？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版八年级下册第三单元·人民当家作主（道德与法治），涉及国家机构与规划职能；可结合人教版高中必修2《经济与社会》第三课·我国的经济发展。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：一份厚厚的规划文件，往往决定未来五年教室里会发生什么。江西省刚刚印发的“十五五”教育规划，把“优质”二字写了进去，但优质的标准是什么？是崭新的教学楼，还是课堂上多出来的那十分钟讨论？答案，或许要由正在读书的你们来填写。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">⚽</div>
+      <h2>体育</h2>
+    </div>
+
+    <div class="overview">体育栏目突出“体育+”的融合价值。体育消费新观察、赛事引领消费、球票撬动产业链等报道，显示体育正在成为经济新增长点；软壳衣、健身装备等产品创新反映消费从“买装备”转向“享生活”。“跟着电影去运动”通知推动电影与体育双向赋能，云南规划高原特色体育强省。体育不再只是赛场上的竞技，也是健康生活方式和产业升级的交汇点。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>体育的价值 在于滋养生命</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202611/t20261120_2111544444.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>体育的价值远不止于竞技和考试。从生理学看，规律运动能促进青少年骨骼发育、增强心肺功能、改善情绪调节；从教育学看，体育培养规则意识、团队协作和抗挫折能力。近年来，国家推动“体教融合”，强调体育是教育的一部分，而非额外负担。这篇文章讨论的正是如何让体育回归“滋养生命”的本质。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>当体育课被挤占时，我们失去的只是一节课吗？如果体育的价值在于滋养生命，那么评价体育课的标准就不该只是跑得多快、跳得多远。你所在学校的体育课，是让你感到放松和快乐，还是另一种形式的考核？如果让你设计一节体育课，你会把“快乐”和“出汗”放在什么位置？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版八年级上册第二单元·遵守社会规则（道德与法治），涉及规则与公平；可结合人教版高中必修1《体育与健康》第一章·体育锻炼与身心健康。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：操场上的哨声响起，有人冲刺，有人慢跑，也有人站在树荫下聊天。体育老师没有催促，只是说：“动起来就好。”这句话听起来简单，却藏着体育最本真的价值——不是每个人都要成为运动员，但每个人都值得被运动滋养。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>动起来，消费“跑”起来——体育消费新观察</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/zxbd/202611/t20261115_20066178.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>体育消费包括购买运动装备、健身课程、赛事门票、户外活动等。近年来，随着全民健身和“双十一”等促销节点，体育消费从“买装备”向“享服务”延伸，比如飞盘、骑行、滑雪等新场景带动了相关产业。体育消费的增长不仅反映健康意识提升，也折射出消费结构从物质型向服务型转变的经济趋势。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>一件软壳衣可以穿去徒步，也可以穿去上学，商家说这叫“多场景”。但当运动装备越来越时尚，我们买它是因为需要运动，还是因为看上去很“运动”？体育消费的繁荣，是否真的让更多人动了起来，还是只是让更多人买了起来？你最近一次为运动花钱，花在了装备上，还是体验上？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版八年级上册第四单元·维护国家利益（道德与法治），涉及经济发展与消费；可结合人教版高中必修2《经济与社会》第二课·我国的社会主义市场经济体制。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：跑鞋、骑行服、露营灯——这些曾经的专业装备，如今出现在越来越多中学生的购物车里。体育消费“跑”起来了，但跑向的是更健康的生活，还是更精致的消费？当“动起来”成为一种时尚，我们或许该问问自己：究竟是身体在动，还是钱包在动？</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">💰</div>
+      <h2>经济</h2>
+    </div>
+
+    <div class="overview">经济栏目以“稳中有进、向新向优”为主线。10月国民经济数据、邮政寄递量增长、智能产品热销、汽车消费全链条发力，共同勾勒消费和生产两端的新变化。APEC相关经济报道从一颗车厘子讲起，帮助读者理解进口农产品如何丰富中国餐桌。新产业催生新岗位、高校毕业生就业创业会议、依法保障就业权益等新闻，则把宏观经济与个人选择连接起来。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>前10个月邮政行业寄递量稳步增长 “小包裹”激活消费“新引擎”</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/zxbd/202611/t20261121_20067208.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>邮政快递业是观察消费活力的“晴雨表”。寄递量增长意味着线上交易活跃、商品流通加快。每一个包裹背后，连接着生产、仓储、运输、配送等多个环节，也连接着消费者的购买意愿。国家邮政局数据显示，快递业务量持续增长，反映出消费市场逐步回暖，尤其是农村地区和中小城市的寄递网络不断完善。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>一个包裹从下单到送达，经过多少个环节？当我们在手机上点“确认支付”时，可能不会想到分拣中心的夜班工人、长途司机和快递小哥。寄递量增长是好事，但快递包装带来的环境压力也不容忽视。便利与环保之间，消费者、企业和政策该如何分工？你愿意为“绿色包装”多付一点钱吗？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版八年级上册第四单元·维护国家利益（道德与法治），涉及经济发展；可结合人教版高中必修2《经济与社会》第三课·我国的经济发展。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：每天清晨，数以亿计的包裹从仓库出发，穿过高速、越过山河，最终抵达一个个门口。它们是消费的“信使”，也是经济的“毛细血管”。当“小包裹”被称作“新引擎”，我们看到的不仅是快递量的数字，更是一个国家流动的活力。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>和合共生｜一颗车厘子的亚太经济学</h3>
+      <div class="meta">
+        <span class="source-tag">未来网</span>
+        <a href="https://news.k618.cn/roll/202611/t20261120_20067061.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>车厘子主要产自智利、新西兰等亚太经济体，通过冷链物流进入中国市场。一颗车厘子的旅程涉及种植、采摘、海运或空运、检验检疫、分销零售等多个环节，是亚太区域贸易合作的缩影。APEC（亚太经合组织）框架下的贸易便利化措施，降低了关税和通关成本，让更多进口水果进入普通家庭。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>一颗车厘子的价格，包含了多少国家的劳动？智利果农、海运船员、中国海关检验员、超市理货员……全球化让商品流动更便宜，但也让供应链变得复杂。当我们在冬天吃到夏天的水果，是享受了贸易的红利，还是增加了碳足迹？如果车厘子会说话，它会怎样讲述自己的“亚太之旅”？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版七年级上册第四章·发展与合作（地理），涉及国际贸易；可结合人教版高中必修2《经济与社会》第三课·经济全球化。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：一颗深红色的车厘子，从智利的果园出发，漂洋过海，最终出现在中国北方城市的果盘里。它的旅程跨越了半个地球，也跨越了无数人的手。这颗小小的水果，像一把钥匙，打开了亚太经济合作的大门——原来，经济学可以这么甜。</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🌟</div>
+      <h2>人物</h2>
+    </div>
+
+    <div class="overview">人物栏目关注青年成长的不同侧面。深圳少年作为东道主把城市故事讲给世界听，青年在“奇迹之城”接住亚太红利，继承APEC深圳峰会成果促进青年交流，展现开放环境中的成长机会。同时，19岁少年卖血浆身亡事件敲响健康与安全警钟，土耳其教授抗议事件则提示表达诉求的边界。人物新闻不只有励志，也有警示和反思。</div>
+
+    
+    
+
+    
+    
+    <div class="highlight">
+      <h3>少年东道主，把深圳故事讲给世界听</h3>
+      <div class="meta">
+        <span class="source-tag">中国教育新闻网</span>
+        <a href="http://www.jyb.cn/rmtzgjyb/202611/t20261119_2111543944.html" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>在APEC深圳峰会期间，一批深圳中学生担任“少年东道主”，用中英文向外国嘉宾介绍城市历史、科技发展和文化特色。这类活动属于青少年国际交流实践，旨在培养跨文化沟通能力和城市认同感。深圳作为改革开放的前沿城市，其“少年东道主”项目将城市叙事与青少年成长结合，让学生从“被讲述者”变为“讲述者”。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>当一位中学生向外宾介绍深圳时，他讲的是官方宣传片里的深圳，还是自己每天生活的深圳？“东道主”的身份是一种荣誉，也是一种责任——你代表的是谁？如果让你向外宾介绍自己的城市，你会选择哪三个关键词？这些关键词，是别人告诉你的，还是你自己感受到的？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版八年级上册第四单元·维护国家利益（道德与法治），涉及国家形象与文化自信；可结合人教版高中必修4《哲学与文化》第八课·文化交流与文化交融。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：站在前海石前，15岁的陈雨桐深吸一口气，用英语向几位外国客人讲述深圳从渔村到都市的故事。她说的不是课本上的标准答案，而是自己每天上学路上看到的变化。那一刻，她不再只是一个学生，而是一座城市的“少年代言人”。</p></div>
+    </div>
+    
+    <div class="highlight">
+      <h3>青少年健康文明生活方式推广计划启动</h3>
+      <div class="meta">
+        <span class="source-tag">中国青年网</span>
+        <a href="https://news.youth.cn/gn/202611/t20261115_16966995.htm" target="_blank">阅读原文 →</a>
+      </div>
+      <div class="dimension knowledge">
+        <span class="label">📚 知识拓展</span><p>该计划由共青团中央等部门发起，旨在引导青少年养成健康饮食、规律运动、合理用眼、科学作息等习惯。近年来，青少年近视率、肥胖率上升，睡眠不足问题突出，国家层面相继出台“双减”政策和体质健康监测制度。推广计划通常通过校园活动、家庭参与和数字化工具，帮助青少年建立可持续的健康行为。</p></div>
+      
+      
+      <div class="dimension thinking">
+        <span class="label">💭 思辨启发</span><p>健康生活方式听起来像常识，但为什么需要专门“推广”？当作业、屏幕和熬夜成为日常，健康往往被排在最后。这个计划能改变什么——是提供工具，还是改变环境？如果学校推迟半小时上课，你会多睡一会儿，还是多刷一会儿手机？健康的第一责任人，是政策、学校、家长，还是你自己？</p></div>
+      <div class="dimension subject">
+        <span class="label">🎓 学科关联</span><p>人教版七年级上册第三单元·师长情谊（道德与法治），涉及家庭与学校责任；可结合人教版高中必修1《体育与健康》第二章·健康生活方式。</p></div>
+      <div class="dimension writing">
+        <span class="label">✍️ 写作素材</span><p>开头示例：晚上十一点，小林的台灯还亮着——不是在做题，而是在刷短视频。第二天课间，他趴在桌上补觉。这样的场景，在无数校园里重复。当“健康文明生活方式”被写成计划、印成文件，我们或许该问：是什么让一个孩子觉得，睡觉比刷手机更奢侈？</p></div>
+    </div>
+    
+  </section>
+  
+  <section class="category">
+    <div class="category-title">
+      <div class="icon">🍟</div>
+      <h2>时事薯条</h2>
+    </div>
+
+    
+
+    
+    
+    <div class="fries-grid">
+      
+      <div class="fries-card">
+        <div class="fries-title">APEC深圳会议举行</div>
+        <div class="fries-comment">💬 主场外交让亚太合作走进普通人视野。</div>
+        <span class="fries-knowledge">📚 APEC是亚太经合组织，中国1991年加入（道德与法治·九年级下册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">卫星互联网低轨卫星发射</div>
+        <div class="fries-comment">💬 太空里的“路由器”正在组网。</div>
+        <span class="fries-knowledge">📚 低轨卫星距地面约500—2000公里，信号时延短（物理·八年级下册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">儿童内衣虚假宣传被罚</div>
+        <div class="fries-comment">💬 A类B类不是营销话术，是安全标准。</div>
+        <span class="fries-knowledge">📚 纺织品安全类别中A类为婴幼儿用品，B类可直接接触皮肤（化学·九年级下册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">10月经济向新向优</div>
+        <div class="fries-comment">💬 数据背后是产业结构和消费习惯的变化。</div>
+        <span class="fries-knowledge">📚 GDP核算有生产法、收入法、支出法三种方法（道德与法治·九年级上册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">世界中文大会召开</div>
+        <div class="fries-comment">💬 中文正成为跨文化理解的桥梁。</div>
+        <span class="fries-knowledge">📚 汉语属于汉藏语系，是世界上使用人数最多的语言之一（语文·八年级上册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">校园足球展青少年风采</div>
+        <div class="fries-comment">💬 踢球不只是比赛，也是团队课。</div>
+        <span class="fries-knowledge">📚 足球比赛每队11人，越位规则是常见判罚难点（体育与健康·八年级全一册）</span>
+      </div>
+      
+      <div class="fries-card">
+        <div class="fries-title">19岁少年卖血浆身亡</div>
+        <div class="fries-comment">💬 健康底线不能为短期利益让路。</div>
+        <span class="fries-knowledge">📚 血浆主要成分是水、蛋白质和无机盐，献血有严格间隔规定（生物·七年级下册）</span>
+      </div>
+      
+    </div>
+    
+
+    
+    
+  </section>
+  
+
+  <!-- ============ 副刊 ============ -->
+  
+  <section class="supplement">
+    <h2>🎭 副刊</h2>
+    <div class="topic">本期话题：主场外交与普通人的距离</div>
+    
+    <div class="perspective">
+      <div class="role">国际关系学者</div>
+      <p>APEC这类主场外交看似离中学生很远，其实它决定的是规则和预期。领导人非正式会议不签条约，但会形成政治共识，比如《深圳展望》就是一份方向性文件。对普通人来说，规则稳定意味着企业敢投资、敢招人，就业机会和商品选择才会更丰富。中国在APEC中强调开放合作，本质是用多边平台降低交易成本。中学生理解这一点，就能明白为什么外交新闻里反复出现“共同体”“互联互通”这些词——它们最终会落到物流、旅游、留学和商品价格上。</p>
+    </div>
+    
+    <div class="perspective">
+      <div class="role">中学思政教师</div>
+      <p>从教学角度看，APEC深圳会议是理解“人类命运共同体”和“对外开放”的鲜活素材。教材里讲“经济全球化”，学生容易觉得抽象；但一颗车厘子从智利果园到中国餐桌，中间经过关税、冷链、电商和物流，这就是全球化的具体链条。我会引导学生注意：开放不是单向受益，中国既进口农产品，也出口智能产品和绿色技术。课堂上可以让学生查一查自己家里的进口商品，再讨论“为什么我们既需要出口也需要进口”，这比直接讲结论更有助于形成独立思考。</p>
+    </div>
+    
+    <div class="perspective">
+      <div class="role">会展行业从业者</div>
+      <p>办一场APEC会议，对城市来说是一次压力测试。深圳要保障几十个经济体的代表团、数千名工商界人士和全球媒体，涉及通关、交通、安保、通信、志愿者服务等上百个环节。这些能力平时看不见，但会沉淀为城市竞争力。比如会议期间的多语种标识、跨境支付便利化、酒店服务标准，会后往往继续服务普通游客和商务人士。对中学生来说，如果将来想从事会展、翻译、酒店管理或城市治理，这类主场活动就是最好的观察窗口——它把“组织能力”变成可感知的城市体验。</p>
+    </div>
+    
+  </section>
+  
+
+  <!-- ============ 观点碰撞 ============ -->
+  
+  <section class="debate">
+    <h2>⚔️ 观点碰撞</h2>
+    <div class="debate-topic">本期话题：儿童产品虚假宣传该重罚还是先教育</div>
+    <div class="debate-sides">
+      
+      <div class="side side-a">
+        <span class="side-label">观点 A</span>
+        重罚更有效。儿童内衣虚标A类、墨镜宣称“降低近视”，直接关系孩子健康安全，不是普通营销夸张。企业面对的是逐利动机，罚款额度如果低于违规收益，整改就只是做样子。重罚能迅速提高违法成本，也能向行业释放信号：儿童产品是监管红线。消费者没有能力逐一检测面料类别或光学指标，监管必须替公众把关。先教育、后处罚的思路，在涉及未成年人健康的问题上容易变成“下不为例”，反而削弱制度威慑力。
+      </div>
+      
+      
+      <div class="side side-b">
+        <span class="side-label">观点 B</span>
+        教育整改应先行。很多中小企业并非故意造假，而是对标准理解不到位，或者被平台营销话术裹挟。直接重罚可能让企业把成本转嫁给消费者，也未必解决根源。更有效的做法是：监管先明确标准、提供检测指引，对首次轻微违规给予整改窗口；同时加强平台审核和消费者教育，让虚假宣传失去流量土壤。处罚是最后手段，不是唯一手段。对儿童产品，既要严管，也要给合规能力弱的企业一条改正的路。
+      </div>
+      
+    </div>
+    
+    <div class="stance">
+      <span class="stance-label">🤔 AI 的立场</span>
+      双方成立的前提不同。重罚派的前提是“违规收益大于成本、企业理性计算”，这在主观故意、屡教不改的场景下成立；教育派的前提是“信息不对称主要来自标准不清、能力不足”，这在首次轻微违规的中小企业身上成立。真正有效的监管应当分层：对故意虚标安全类别、危害健康的行为从重处罚；对标准理解偏差给予整改期和技术支持。同时，平台不能只收流量费不担审核责。争论“重罚还是教育”容易二选一，更好的提问是：什么情况下罚、什么情况下帮，以及谁来判定。
+    </div>
+    
+  </section>
+  
+
+  <!-- ============ 本周思考题 ============ -->
+  
+  <section class="discussion">
+    <h2>💡 本周思考题</h2>
+    <div class="question">如果一座城市要举办大型国际会议，你认为普通市民最应该获得什么、又最需要让渡什么？</div>
+    
+    <div class="hints">
+      <div class="hints-title">🧭 思路提示</div>
+      <ul><li>可以从交通便利、环境改善、就业机会、城市知名度等“获得”角度想。</li><li>也可以从出行管制、噪音、物价波动、公共空间临时占用等“让渡”角度想。</li><li>试着区分短期影响和长期影响，并思考谁受益更多、谁承担成本更多。</li></ul>
+    </div>
+    
+    
+    <div class="writing-tips">
+      <div class="hints-title">✍️ 写作建议</div>
+      <p>写作时不要写成“好处清单”或“抱怨清单”。建议先选一个具体角色，比如家住会场附近的中学生、开小餐馆的店主、或负责安保的志愿者，用第一人称写一天的经历。然后加入一个转折：你原本担心的事有没有发生？你意外收获了什么？最后回到问题本身，给出你的判断：大型活动值不值得办，取决于什么条件。注意用细节支撑观点，比如“地铁多了一趟专列”比“交通改善”更有说服力。</p>
+    </div>
+    
+  </section>
+  
+
+  <footer>
+    <div><span class="brand">大少年新闻周报</span> · 每周六更新</div>
+    <div>由 DeepSeek 生成分析 · 数据来自新华网、人民网等公开新闻源</div>
+    <div>本报告仅供学习参考</div>
+  </footer>
+</div>
+</body>
+</html>
